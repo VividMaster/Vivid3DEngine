@@ -60,9 +60,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\ReboundEngine\ReboundEngine.csproj">
-      <Project>{bad0189b-1671-4b40-83ff-c15c622c2609}</Project>
-      <Name>ReboundEngine</Name>
+    <ProjectReference Include="..\..\StarEngine\StarEngine2.csproj">
+      <Project>{332c9868-8b63-411d-b2c2-d0080742b8f6}</Project>
+      <Name>StarEngine2</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

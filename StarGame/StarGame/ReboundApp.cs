@@ -23,9 +23,9 @@ using StarEngine.Import;
 using StarEngine.Material;
 namespace ReboundGame
 {
-    public class ReboundApp : StarApp
+    public class StarGame : StarApp
     {
-        public ReboundApp(int w, int h, bool full) : base("Rebound - Alpha", w, h, full)
+        public StarGame(int w, int h, bool full) : base("Rebound - Alpha", w, h, full)
         {
 
         }

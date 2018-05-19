@@ -12,9 +12,9 @@ namespace ReboundGame
         {
             var logoState = new States.LogosState();
 
-            ReboundApp.InitState = logoState;
+            StarGame.InitState = logoState;
 
-            var game = new ReboundApp(800, 600, false);
+            var game = new StarGame(800, 600, false);
 
             game.Run(30, 30);
 
