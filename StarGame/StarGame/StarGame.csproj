@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{67FF5093-6CD7-45EA-AAF0-E0275FB735CC}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>ReboundGame</RootNamespace>
-    <AssemblyName>ReboundGame</AssemblyName>
+    <RootNamespace>StarGame</RootNamespace>
+    <AssemblyName>StarKnights</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -50,7 +50,7 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ReboundApp.cs" />
+    <Compile Include="StarKnights.cs" />
     <Compile Include="States\LogosState.cs" />
     <Compile Include="States\MainMenuState.cs" />
   </ItemGroup>

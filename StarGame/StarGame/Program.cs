@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ReboundGame
+namespace StarKnight
 {
     class Program
     {
@@ -12,11 +12,11 @@ namespace ReboundGame
         {
             var logoState = new States.LogosState();
 
-            StarGame.InitState = logoState;
+            StarEngine.App.StarApp.InitState = logoState;
 
             var game = new StarGame(800, 600, false);
 
-            game.Run(30, 30);
+            game.Run(60, 60);
 
         }
     }

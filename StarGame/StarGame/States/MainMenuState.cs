@@ -27,7 +27,7 @@ using StarEngine.Logic;
 using StarEngine.Resonance;
 using StarEngine.App;
 using StarEngine.Resonance.Forms;
-namespace ReboundGame.States
+namespace StarKnight.States
 {
     public class MainMenuState : StarState
     {
@@ -59,7 +59,7 @@ namespace ReboundGame.States
 
             UI.Root = new ImageForm().Set(0, 0, StarEngine.App.StarApp.W, StarEngine.App.StarApp.H,"ImageForm").SetImage(MenuBG);
 
-            WindowForm win1 = (WindowForm)(new WindowForm().Set(40, 100, 260, 400, "Rebound Arena"));
+            WindowForm win1 = (WindowForm)(new WindowForm().Set(40, 100, 260, 400, "Star Knights"));
 
             win1.NoResize();
 

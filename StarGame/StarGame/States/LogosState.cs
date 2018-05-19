@@ -24,7 +24,7 @@ using StarEngine.Material;
 using StarEngine.State;
 using StarEngine.Texture;
 using StarEngine.Logic;
-namespace ReboundGame.States
+namespace StarKnight.States
 {
     public class LogosState : StarState
     {
@@ -227,7 +227,7 @@ namespace ReboundGame.States
                 LogoAlpha = 0.0f;
                 ms.Stop();
 
-                StarApp.PushState(new MainMenuState());
+                StarApp.PushState(new States.MainMenuState());
 
 
             }
