@@ -51,6 +51,7 @@ namespace StarEngine.FrameBuffer
             GL.Viewport(0, 0, IW, IH);
             AppInfo.RW = IW;
             AppInfo.RH = IH;
+            GL.ClearColor(0, 0, 0, 0);
             GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
 
 

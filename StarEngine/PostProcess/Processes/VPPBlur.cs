@@ -10,13 +10,14 @@ namespace StarEngine.PostProcess.Processes
     public class VPPBlur : VPostProcess
     {
         public VEBlur BFX = null;
+        public float Blur = 0.7f;
         public override void Init()
         {
             BFX = new VEBlur();
         }
         public override void Bind(VTex2D bb)
         {
-
+            BFX.Blur = Blur;
             bb.Bind(0);
             BFX.Bind();
 
@@ -34,7 +35,7 @@ namespace StarEngine.PostProcess.Processes
     public class VEBlur : Effect3D
     {
         public float Blur = 0.5f;
-        public VEBlur() : base("","blurVS.txt","blurFS.txt")
+        public VEBlur() : base("","Data\\Shader\\blurVS.txt","Data\\Shader\\blurFS.txt")
         {
 
         }

@@ -26,6 +26,7 @@ using StarEngine.Texture;
 using StarEngine.Logic;
 using StarEngine.Resonance;
 using StarEngine.App;
+using StarEngine.PostProcess.Processes;
 using StarEngine.Resonance.Forms;
 namespace StarKnight.States
 {
@@ -142,7 +143,9 @@ namespace StarKnight.States
 
             light1.Diff = new OpenTK.Vector3(3, 3, 3);
 
-
+            ppRen.Add(new VPPBlur());
+            VPPBlur  bp = (VPPBlur)ppRen.Processes[0];
+            bp.Blur = 0.9f;
         }
 
         public override void UpdateState()
@@ -156,7 +159,7 @@ namespace StarKnight.States
         public override void DrawState()
         {
             //Console.WriteLine("Draw");
-            /*
+            
             int move = 8;
             if (VInput.KeyIn(OpenTK.Input.Key.ShiftLeft))
             {
@@ -198,10 +201,15 @@ namespace StarKnight.States
             lx = VInput.MX;
             ly = VInput.MY;
             cam1.Turn(new OpenTK.Vector3(yd, xd, 0), Space.Local);
-            */
-            //scene3d.Render();
 
-            UI.Render();
+            //ppRen.Render();
+            scene3d.RenderShadows();
+            //scene3d.Render();
+            ppRen.Render();
+
+
+
+ //           UI.Render();
 
 
         }

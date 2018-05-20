@@ -41,9 +41,11 @@ namespace StarEngine.PostProcess
         }
         public void Render()
         {
+           // GL.Disable(EnableCap.Blend);
              FB.Bind();
               Scene.Render();
                FB.Release();
+        //    GL.Disable(EnableCap.Blend);
             //GL.DrawBuffer(DrawBufferMode.Back);
             foreach(var p in Processes)
             {
@@ -58,7 +60,7 @@ namespace StarEngine.PostProcess
 
             }
           //  GL.Viewport(0, 0, 1024, 768);
-            DrawQuad();
+           DrawQuad();
         }
         public int qva = 0, qvb = 0;
         public void DrawQuad()

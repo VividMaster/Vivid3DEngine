@@ -58,7 +58,17 @@ namespace StarEngine.Scene
                     }
                 }
         }
-
+        public virtual void RenderShadows()
+        {
+            int ls = 0;
+            GL.Disable(EnableCap.Blend);
+            foreach (var l in Lights)
+            {
+                ls++;
+                l.DrawShadowMap(this);
+                //    Console.WriteLine("LightShadows:" + ls);
+            }
+        }
         public virtual void Render()
         {
           
@@ -75,14 +85,8 @@ namespace StarEngine.Scene
             }
             else
             {
-                int ls = 0;
-                GL.Disable(EnableCap.Blend);
-                foreach (var l in Lights)
-                {
-                    ls++;
-                    l.DrawShadowMap(this);
-                //    Console.WriteLine("LightShadows:" + ls);
-                }
+               
+              
                 foreach (var c in Cams)
                 {
                     bool first = true;
