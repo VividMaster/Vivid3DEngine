@@ -147,7 +147,7 @@ namespace StarKnight.States
 
         public override void UpdateState()
         {
-            Console.WriteLine("Update");
+          //  Console.WriteLine("Update");
             UI.Update();
 
         }
@@ -155,7 +155,7 @@ namespace StarKnight.States
         public int lx, ly;
         public override void DrawState()
         {
-            Console.WriteLine("Draw");
+            //Console.WriteLine("Draw");
             /*
             int move = 8;
             if (VInput.KeyIn(OpenTK.Input.Key.ShiftLeft))

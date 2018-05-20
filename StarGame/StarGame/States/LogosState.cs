@@ -41,7 +41,7 @@ namespace StarKnight.States
             Console.WriteLine("Loading logo tex.");
             LogoTex = new StarEngine.Texture.VTex2D("Data\\2D\\Logo\\DarkArtLogo.png", LoadMethod.Single);
             PresTex = new VTex2D("Data\\2D\\Logo\\Presents.png", LoadMethod.Single);
-            GameTex = new VTex2D("Data\\2D\\Logo\\ArenaLogo.png", LoadMethod.Single);
+            GameTex = new VTex2D("Data\\2D\\Logo\\sklogo1.png", LoadMethod.Single);
             Console.WriteLine("Loaded.");
 
             ms = StarSoundSys.Play2DFile("Data\\Music\\Logo\\LogoTheme1.wav");
