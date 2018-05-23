@@ -37,7 +37,7 @@
     </Reference>
     <Reference Include="irrKlang.NET4, Version=1.0.6617.18810, Culture=neutral, PublicKeyToken=a854741bd80517c7, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Rebound\irrKlang.NET4.dll</HintPath>
+      <HintPath>..\..\StarKnights\StarKnightsEpisode1\irrKlang.NET4.dll</HintPath>
     </Reference>
     <Reference Include="OpenTK, Version=3.0.0.0, Culture=neutral, PublicKeyToken=bad199fe84eb3df4, processorArchitecture=MSIL">
       <HintPath>..\StarGame\packages\OpenTK.3.0.0\lib\net20\OpenTK.dll</HintPath>
