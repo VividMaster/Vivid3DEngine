@@ -7,8 +7,8 @@
     <ProjectGuid>{332C9868-8B63-411D-B2C2-D0080742B8F6}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>StarEngine2</RootNamespace>
-    <AssemblyName>StarEngine2</AssemblyName>
+    <RootNamespace>StarEngine</RootNamespace>
+    <AssemblyName>StarEngine</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <NuGetPackageImportStamp>
@@ -89,6 +89,8 @@
     <Compile Include="Lighting\VLight.cs" />
     <Compile Include="Material\Material3D.cs" />
     <Compile Include="Math\Maths.cs" />
+    <Compile Include="ParticleSystem\Particle.cs" />
+    <Compile Include="ParticleSystem\ParticleEmitter.cs" />
     <Compile Include="PostProcess\Processes\VPPBlur.cs" />
     <Compile Include="PostProcess\VPostProcess.cs" />
     <Compile Include="PostProcess\VPostProcessRenderer.cs" />

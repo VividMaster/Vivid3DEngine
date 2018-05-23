@@ -26,6 +26,8 @@ using StarEngine.Texture;
 using StarEngine.Logic;
 using StarEngine.Resonance;
 using StarEngine.App;
+using OpenTK;
+using StarEngine.ParticleSystem;
 using StarEngine.PostProcess.Processes;
 using StarEngine.Resonance.Forms;
 namespace StarKnight.States
@@ -44,7 +46,8 @@ namespace StarKnight.States
         public GraphNode3D ent1 = null;
         public GraphLight3D light1 = null;
         public PostProcessRender ppRen;
-
+        public ParticleEmitter pe1;
+        public Particle pb1;
         public override void InitState()
         {
 
@@ -145,13 +148,23 @@ namespace StarKnight.States
 
             ppRen.Add(new VPPBlur());
             VPPBlur  bp = (VPPBlur)ppRen.Processes[0];
-            bp.Blur = 0.9f;
+            bp.Blur = 0.1f;
+
+            pe1 = new ParticleEmitter();
+            pb1 = new Particle();
+            pb2 = new Particle();
+            pb1.Tex = new VTex2D("Data\\particle\\part1.png",LoadMethod.Single,true);
+            pb2.Tex = new VTex2D("Data\\particle\\part2.png", LoadMethod.Single, true);
+
+
         }
 
+        Particle pb2;
         public override void UpdateState()
         {
           //  Console.WriteLine("Update");
             UI.Update();
+            pe1.Update();
 
         }
         public bool firstd = true;
@@ -159,7 +172,7 @@ namespace StarKnight.States
         public override void DrawState()
         {
             //Console.WriteLine("Draw");
-            
+
             int move = 8;
             if (VInput.KeyIn(OpenTK.Input.Key.ShiftLeft))
             {
@@ -189,6 +202,20 @@ namespace StarKnight.States
             {
                 light1.LocalPos = cam1.LocalPos;
             }
+            if (VInput.MB[1])
+            {
+                Random rnd = new Random(Environment.TickCount);
+
+                Vector3 ri = new Vector3(rnd.Next(-4, 4), rnd.Next(-4, 4), rnd.Next(-4, 4));
+
+                //Console.WriteLine("yeah");
+                pe1.Emit(pb1, new OpenTK.Vector3(0, 40, 0), ri);
+
+                ri = new Vector3(rnd.Next(-4, 4), rnd.Next(-4, 4), rnd.Next(-4, 4));
+
+                pe1.Emit(pb2, new Vector3(0, 40, 0), ri);
+
+            }
             int xd, yd;
             if (firstd)
             {
@@ -204,8 +231,11 @@ namespace StarKnight.States
 
             //ppRen.Render();
             scene3d.RenderShadows();
+            scene3d.Render();
+            pe1.Render();
             //scene3d.Render();
-            ppRen.Render();
+            //ppRen.Render();
+
 
 
 
