@@ -44,7 +44,7 @@ namespace StarKnight.States
             GameTex = new VTex2D("Data\\2D\\Logo\\sklogo1.png", LoadMethod.Single);
             Console.WriteLine("Loaded.");
 
-            ms = StarSoundSys.Play2DFile("Data\\Music\\Logo\\LogoTheme1.wav");
+            ms = StarSoundSys.Play2DFile("Data\\Music\\Logo\\LogoSting1.wav");
             
             VPen.SetProj(0, 0, StarApp.W, StarApp.H);
 
