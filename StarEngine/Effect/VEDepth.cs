@@ -17,7 +17,7 @@ namespace StarEngine.Effect
          
             //SetMat("MVP", Effect.FXG.Local * FXG.Proj);
             SetMat("model", Effect.FXG.Local);
-            SetMat("cam", OpenTK.Matrix4.Invert(OpenTK.Matrix4.CreateTranslation(FXG.Cam.WorldPos)) * FXG.Cam.CamWorld);
+            SetMat("cam", FXG.Cam.CamWorld);
             SetMat("proj", FXG.Cam.ProjMat);
             SetVec3("camP", FXG.Cam.WorldPos);
             SetFloat("minZ", FXG.Cam.MinZ);

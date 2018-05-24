@@ -65,13 +65,13 @@ namespace StarEngine.Scene
             Render();
             PostRender();
             Release();
-            foreach (var s in Sub)
-            {
-                s.Present(c);
-            }
+      //      foreach (var s in Sub)
+        //    {
+          //      s.Present(c);
+           // }
         }
 
-        private void SetMats(GraphCam3D c)
+        public void SetMats(GraphCam3D c)
         {
             Effect.FXG.Proj = c.ProjMat;
             Effect.FXG.Cam = c;
@@ -81,9 +81,9 @@ namespace StarEngine.Scene
             //mm = mm * Matrix4.Invert(Matrix4.CreateTranslation(c.WorldPos));
 
 
-            mm = World * mm;
-            var wp = WorldPos;
-            mm = Matrix4.CreateTranslation(wp) * mm;
+            mm = World;
+            //var wp = LocalPos;
+            //mm = mm*Matrix4.CreateTranslation(wp);
             //GL.LoadMatrix(ref mm);
             Effect.FXG.Local = mm;
         }

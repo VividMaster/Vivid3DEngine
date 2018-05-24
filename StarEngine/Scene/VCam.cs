@@ -25,16 +25,16 @@ namespace StarEngine.Scene
         public override void Turn(Vector3 t,Space s)
         {
             LR = LR + t;
-            LR.Z = 0;
+            //LR.Z = 0;
             CalcMat();
         }
         public void CalcMat()
         {
-            LR.X = Wrap(LR.X);
-            LR.Y = Wrap(LR.Y);
-            LR.Z = Wrap(LR.Z);
+            //LR.X = Wrap(LR.X);
+           // LR.Y = Wrap(LR.Y);
+          //  LR.Z = Wrap(LR.Z);
             var r = LR;
-            Matrix4 t = Matrix4.CreateRotationY(MathHelper.DegreesToRadians(r.Y)) * Matrix4.CreateRotationX(MathHelper.DegreesToRadians(r.X)) * Matrix4.CreateRotationZ(MathHelper.DegreesToRadians(r.Z));
+            Matrix4 t = Matrix4.CreateRotationX(MathHelper.DegreesToRadians(r.X)) * Matrix4.CreateRotationY(MathHelper.DegreesToRadians(r.Y));// * Matrix4.CreateRotationZ(MathHelper.DegreesToRadians(r.Z));
             LocalTurn = t;
         }
         public float Wrap(float v)
@@ -65,7 +65,8 @@ namespace StarEngine.Scene
             get
             {
 
-                return World;
+                var m = Matrix4.Invert(LocalTurn*Matrix4.CreateTranslation(LocalPos));
+                return m;
             }
         }
     }

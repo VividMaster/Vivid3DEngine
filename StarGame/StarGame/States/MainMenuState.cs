@@ -100,8 +100,8 @@ namespace StarKnight.States
             Console.WriteLine("Set up.");
             var mat1 = new Material3D();
             //Console.WriteLine("Loading texture.");
-            mat1.TCol = new Tex2D("Data\\3D\\brick_2.png");
-            mat1.TNorm = new Tex2D("Data\\3D\\brick_2_NRM.png");
+            mat1.TCol = new VTex2D("Data\\3D\\brick_2.png",LoadMethod.Single,false);
+            mat1.TNorm = new VTex2D("Data\\3D\\brick_2_NRM.png", LoadMethod.Single,false);
             Console.WriteLine("Loaded.");
 
 
@@ -109,7 +109,7 @@ namespace StarKnight.States
 
             ge.SetMat(mat1);
             cam1 = new GraphCam3D();
-            cam1.LocalPos = new OpenTK.Vector3(0, 80, 450);
+            cam1.LocalPos = new OpenTK.Vector3(0, 80, 150);
 
 
             cam1.LookAt(ent1);
@@ -136,9 +136,10 @@ namespace StarKnight.States
 
             scene3d.Add(ent1);
 
-           scene3d.Add(l2);
+           //scene3d.Add(l2);
 
-            scene3d.Add(l3);
+
+         //   scene3d.Add(l3);
 
             scene3d.Add(light1);
 
@@ -151,8 +152,9 @@ namespace StarKnight.States
             bp.Blur = 0.1f;
 
             pe1 = new ParticleEmitter();
-            pb1 = new Particle();
-            pb2 = new Particle();
+            pe1.Graph = scene3d;
+            pb1 = new Particle(32, 32);
+            pb2 = new Particle(32, 32);
             pb1.Tex = new VTex2D("Data\\particle\\part1.png",LoadMethod.Single,true);
             pb2.Tex = new VTex2D("Data\\particle\\part2.png", LoadMethod.Single, true);
 
@@ -164,7 +166,8 @@ namespace StarKnight.States
         {
           //  Console.WriteLine("Update");
             UI.Update();
-            pe1.Update();
+            //pe1.Update();
+            scene3d.Update();
 
         }
         public bool firstd = true;
@@ -209,11 +212,12 @@ namespace StarKnight.States
                 Vector3 ri = new Vector3(rnd.Next(-4, 4), rnd.Next(-4, 4), rnd.Next(-4, 4));
 
                 //Console.WriteLine("yeah");
-                pe1.Emit(pb1, new OpenTK.Vector3(0, 40, 0), ri);
+                pe1.Emit(pb1, new OpenTK.Vector3(0, 0, 0), ri);
 
                 ri = new Vector3(rnd.Next(-4, 4), rnd.Next(-4, 4), rnd.Next(-4, 4));
 
-                pe1.Emit(pb2, new Vector3(0, 40, 0), ri);
+                pe1.Emit(pb2, new Vector3(0, 10, 0), ri);
+
 
             }
             int xd, yd;
@@ -227,7 +231,7 @@ namespace StarKnight.States
             yd = VInput.MY - ly;
             lx = VInput.MX;
             ly = VInput.MY;
-            cam1.Turn(new OpenTK.Vector3(yd, xd, 0), Space.Local);
+            cam1.Turn(new OpenTK.Vector3(-yd, -xd, 0), Space.Local);
 
             //ppRen.Render();
             scene3d.RenderShadows();

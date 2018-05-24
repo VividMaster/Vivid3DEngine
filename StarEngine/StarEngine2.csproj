@@ -73,6 +73,7 @@
     <Compile Include="Effect\VEDepth.cs" />
     <Compile Include="Effect\VEffect.cs" />
     <Compile Include="Effect\VEMultiPass.cs" />
+    <Compile Include="Effect\VEParticle.cs" />
     <Compile Include="Enviro\VEnvRenderer.cs" />
     <Compile Include="Font\VFont.cs" />
     <Compile Include="Font\VFontRenderer.cs" />
@@ -88,6 +89,7 @@
     <Compile Include="Input\VInput.cs" />
     <Compile Include="Lighting\VLight.cs" />
     <Compile Include="Material\Material3D.cs" />
+    <Compile Include="Material\MaterialParticle3D.cs" />
     <Compile Include="Math\Maths.cs" />
     <Compile Include="ParticleSystem\Particle.cs" />
     <Compile Include="ParticleSystem\ParticleEmitter.cs" />
@@ -104,6 +106,7 @@
     <Compile Include="Resonance\UIForm.cs" />
     <Compile Include="Scene\GraphLight.cs" />
     <Compile Include="Scene\GraphNode.cs" />
+    <Compile Include="Scene\GraphParticle3D.cs" />
     <Compile Include="Scene\GraphSprite.cs" />
     <Compile Include="Scene\SceneGraph.cs" />
     <Compile Include="Scene\SceneInfo.cs" />
@@ -157,8 +160,10 @@
     <Compile Include="Visuals\VRenderLayer.cs" />
     <Compile Include="Visuals\VRLDepth.cs" />
     <Compile Include="Visuals\VRLMultiPass.cs" />
+    <Compile Include="Visuals\VRLParticle.cs" />
     <Compile Include="Visuals\VRLSimple.cs" />
     <Compile Include="Visuals\VRMultiPass.cs" />
+    <Compile Include="Visuals\VRParticle.cs" />
     <Compile Include="Visuals\VVisualizer.cs" />
     <Compile Include="Visuals\VVSimple.cs" />
     <Compile Include="Visuals\VVVBO.cs" />

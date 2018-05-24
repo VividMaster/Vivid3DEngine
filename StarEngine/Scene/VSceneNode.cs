@@ -38,9 +38,13 @@ namespace StarEngine.Scene
                 Matrix4 r = Matrix4.Identity;
                 if (Top != null)
                 {
-                    r = Top.World * r;
+                    r = Top.World;
                 }
-                r = LocalTurn * r;
+                r = (LocalTurn *Matrix4.CreateTranslation(LocalPos))*r;
+
+
+
+
 
        
                 return r;
@@ -56,6 +60,10 @@ namespace StarEngine.Scene
             Rot(new Vector3(0, 0, 0), Space.Local);
         }
         public virtual void Init()
+        {
+
+        }
+        public virtual void Update()
         {
 
         }
@@ -82,10 +90,12 @@ namespace StarEngine.Scene
             Matrix4 t = Matrix4.CreateRotationY(MathHelper.DegreesToRadians(r.Y)) * Matrix4.CreateRotationX(MathHelper.DegreesToRadians(r.X)) * Matrix4.CreateRotationZ(MathHelper.DegreesToRadians(r.Z));
             LocalTurn = LocalTurn * t;
         }
-       // public void LookAt(Vector3 t)
+        // public void LookAt(Vector3 t)
         //{
-         //   LocalTurn = Matrix4.LookAt(WorldPos, t, Vector3.UnitY);
-       // }
+        //   LocalTurn = Matrix4.LookAt(WorldPos, t, Vector3.UnitY);
+        // }
+        public bool Lit = true;
+        public bool FaceCamera = false;
         public void Move(Vector3 v,Space s)
         {
            // v.X = -v.X;
@@ -93,9 +103,10 @@ namespace StarEngine.Scene
             {
 
 
-                var nv = Vector3.TransformPosition(v,Matrix4.Invert(LocalTurn));
-          
-                LocalPos = LocalPos + new Vector3(nv.X, nv.Y, nv.Z);
+                var nv = Vector3.TransformPosition(v,World);
+
+                LocalPos = nv;//Matrix4.Invert(nv);
+                //LocalPos = LocalPos + new Vector3(nv.X, nv.Y, nv.Z);
 
 
             }
@@ -106,8 +117,18 @@ namespace StarEngine.Scene
         }
         public void LookAt(Vector3 p,Vector3 up)
         {
-            Matrix4 m = Matrix4.LookAt(Vector3.Zero, p - WorldPos,up);
-            LocalTurn = m;
+
+            Matrix4 m = Matrix4.LookAt(Vector3.Zero, p - LocalPos, up);
+            //Console.WriteLine("Local:" + LocalPos.ToString() + " TO:" + p.ToString());
+            //m=m.ClearTranslation();
+
+         //   m = m.Inverted();
+            //m = m.ClearScale();
+            //m = m.ClearProjection();
+            //m = m.Inverted();
+
+                LocalTurn = m;
+
         }
         public void LookAtZero(Vector3 p,Vector3 up)
         {

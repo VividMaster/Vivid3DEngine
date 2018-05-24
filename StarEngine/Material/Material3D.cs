@@ -9,10 +9,10 @@ namespace StarEngine.Material
 {
     public class Material3D
     {
-        public Tex2D TCol;
-        public Tex2D TNorm;
-        public Tex2D TSpec;
-        public Tex2D TAO;
+        public VTex2D TCol;
+        public VTex2D TNorm;
+        public VTex2D TSpec;
+        public VTex2D TAO;
         public VTexCube TEnv;
         public float envS = 0.1f;
         public OpenTK.Vector3 Spec = new OpenTK.Vector3(0.6f, 0.4f, 0.2f);
@@ -20,8 +20,8 @@ namespace StarEngine.Material
         public static Material3D Active = null;
         public void LoadTexs(string folder,string name)
         {
-            TCol = new Tex2D(folder + "//" + name + "_c.png",false);
-            TNorm = new Tex2D(folder + "//" + name + "_n.png",false);
+            TCol = new VTex2D(folder + "//" + name + "_c.png",LoadMethod.Single,false);
+            TNorm = new VTex2D(folder + "//" + name + "_n.png",LoadMethod.Single,false);
         }
         public virtual void Bind()
         {
@@ -35,9 +35,9 @@ namespace StarEngine.Material
         }
         public virtual void Release()
         {
-            if (TCol != null) TCol.Unbind(0);
+            if (TCol != null) TCol.Release(0);
           
-            if(TNorm!=null) TNorm.Unbind(1);
+            if(TNorm!=null) TNorm.Release(1);
             if(TEnv!=null) TEnv.Release(2);
             Active = null;
         }

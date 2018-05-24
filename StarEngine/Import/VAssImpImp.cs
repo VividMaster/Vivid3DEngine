@@ -63,10 +63,11 @@ namespace StarEngine.Import
                     {
                         try
                         {
-                            vm.TCol = new Tex.Tex2D(IPath + t1.FilePath, false);
+                            vm.TCol = new Texture.VTex2D(IPath + t1.FilePath,Texture.LoadMethod.Single, false);
                             if (File.Exists(IPath + "norm" + t1.FilePath))
                             {
-                                vm.TNorm = new Tex.Tex2D(IPath + "norm" + t1.FilePath, false);
+                                vm.TNorm = new Texture.VTex2D(IPath + "norm" + t1.FilePath,Texture.LoadMethod.Single, false);
+
                                 Console.WriteLine("TexLoaded");
                             }
                         }

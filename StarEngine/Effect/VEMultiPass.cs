@@ -17,10 +17,10 @@ namespace StarEngine.Effect
            
             //SetMat("MVP", Effect.FXG.Local * FXG.Proj);
             SetMat("model", Effect.FXG.Local);
-            SetMat("view", OpenTK.Matrix4.Invert(OpenTK.Matrix4.CreateTranslation(FXG.Cam.WorldPos)) * FXG.Cam.CamWorld);
+            SetMat("view", FXG.Cam.CamWorld);
             SetMat("proj", FXG.Cam.ProjMat);
             SetFloat("lightDepth", Settings.Quality.ShadowDepth);
-            SetVec3("viewPos", FXG.Cam.WorldPos);
+            SetVec3("viewPos", FXG.Cam.LocalPos);
             SetVec3("lightPos", Lighting.GraphLight3D.Active.WorldPos);
             SetVec3("lightCol", Lighting.GraphLight3D.Active.Diff);
             SetVec3("lightSpec", Lighting.GraphLight3D.Active.Spec);
