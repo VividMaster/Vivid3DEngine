@@ -54,6 +54,12 @@ namespace StarEngine.Scene
         public GraphNode3D Top = null;
         public List<GraphNode3D> Sub = new List<GraphNode3D>();
         public VInfoMap<string, object> Links = new VInfoMap<string, object>();
+        public bool Lit = true;
+        public bool FaceCamera = false;
+        public bool CastShadows = true;
+        public bool CastDepth = true;
+
+
         public GraphNode3D()
         {
             Init();
@@ -94,8 +100,7 @@ namespace StarEngine.Scene
         //{
         //   LocalTurn = Matrix4.LookAt(WorldPos, t, Vector3.UnitY);
         // }
-        public bool Lit = true;
-        public bool FaceCamera = false;
+     
         public void Move(Vector3 v,Space s)
         {
            // v.X = -v.X;
@@ -125,7 +130,8 @@ namespace StarEngine.Scene
          //   m = m.Inverted();
             //m = m.ClearScale();
             //m = m.ClearProjection();
-            //m = m.Inverted();
+            m = m.Inverted();
+
 
                 LocalTurn = m;
 

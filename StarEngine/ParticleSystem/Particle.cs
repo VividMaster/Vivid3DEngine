@@ -24,6 +24,8 @@ namespace StarEngine.ParticleSystem
             Renderer = new Visuals.VRParticle();
             Lit = false;
             FaceCamera = true;
+            CastShadows = false;
+            CastDepth = false;
         }
         public Particle(Particle bp)
         {

@@ -87,7 +87,10 @@ namespace StarEngine.Scene
         public virtual void RenderNodeDepth(GraphNode3D node, GraphCam3D c)
         {
 
-            node.PresentDepth(c);
+            if (node.CastDepth)
+            {
+                node.PresentDepth(c);
+            }
             foreach(var snode in node.Sub)
             {
                 RenderNodeDepth(snode, c);
