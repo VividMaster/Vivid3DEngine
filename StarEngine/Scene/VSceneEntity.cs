@@ -14,6 +14,114 @@ namespace StarEngine.Scene
     {
         public VRenderer Renderer = null;
         public List<VMesh> Meshes = new List<VMesh>();
+        public Bounds Bounds
+        {
+            get
+            {
+                sw = sh = sd = 20000;
+                bw = bh = bd = -20000;
+                GetBounds(this);
+                Bounds res = new Bounds();
+                res.W = bw - sw;
+                res.H = bh - sh;
+                res.D = bd - sd;
+                res.MinX = sw;
+                res.MaxX = bw;
+                res.MinY = sh;
+                res.MaxY = bh;
+                res.MinZ = sd;
+                res.MaxZ = bd;
+                return res;
+            }
+        }
+        private float sw, sh, sd;
+        private float bw, bh, bd;
+        public void GetBounds(GraphEntity3D node)
+        {
+            foreach(var m in node.Meshes)
+            {
+                for(int i = 0; i < m.NumVertices; i++)
+                {
+                    int vid = i * 3;
+                    if (m.Vertices[vid] < sw)
+                    {
+                        sw = m.Vertices[vid];
+                    }
+                    if (m.Vertices[vid] > bw)
+                    {
+                        bw = m.Vertices[vid];
+                    }
+                    if(m.Vertices[vid+1]<sh)
+                    {
+                        sh = m.Vertices[vid + 1];
+                    }
+                    if (m.Vertices[vid + 1] > bh)
+                    {
+                        bh = m.Vertices[vid + 1];
+                    }
+                    if (m.Vertices[vid + 2] < sd)
+                    {
+                        sd = m.Vertices[vid + 2];
+                    }
+                    if (m.Vertices[vid + 2] > bd)
+                    {
+                        bd = m.Vertices[vid + 2];
+                    }
+                }
+            }
+            foreach(var snode in node.Sub)
+            {
+                if (snode is GraphEntity3D)
+                {
+                    GetBounds(snode as GraphEntity3D);
+                }
+            }
+        }
+        public Physics.PyType PyType;
+        public Physics.PyDynamic PO = null;
+        public void EnablePy(Physics.PyType type)
+        {
+            PyType = type;
+            switch (PyType)
+            {
+                case Physics.PyType.Box:
+                    PO = new Physics.PyDynamic(type,this);
+                    break;
+                case Physics.PyType.Mesh:
+                    PO = new Physics.PyDynamic(type, this);
+                    break;
+
+            }
+        }
+
+        public List<Vector3> GetAllVerts
+        {
+            get
+            {
+                List<Vector3> verts = new List<Vector3>();
+                GetVerts(verts, this);
+                return verts;
+            }
+        }
+        public void GetVerts(List<Vector3> verts,GraphEntity3D node)
+        {
+            foreach(var m in node.Meshes)
+            {
+                for(int i = 0; i < m.NumVertices; i++)
+                {
+                    int vid = i * 3;
+                    verts.Add(new Vector3(m.Vertices[vid], m.Vertices[vid + 1], m.Vertices[vid + 2]));
+                    // verts.Add(m.Vertices[vid]);
+                  //  verts.Add(m.Vertices[vid + 1]);
+                //    verts.Add(m.Vertices[vid + 2]);
+                }
+
+            }
+            foreach(var snode in node.Sub)
+            {
+                GetVerts(verts, snode as GraphEntity3D);
+            }
+        }
         public override void Init()
         {
             Renderer = new VRMultiPass();

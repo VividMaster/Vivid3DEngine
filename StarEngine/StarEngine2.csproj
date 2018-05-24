@@ -9,10 +9,11 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>StarEngine</RootNamespace>
     <AssemblyName>StarEngine</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -31,20 +32,42 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="AssimpNet, Version=3.3.2.0, Culture=neutral, PublicKeyToken=3edc10cb77b1bca2, processorArchitecture=MSIL">
       <HintPath>..\StarGame\packages\AssimpNet.3.3.2\lib\net45\AssimpNet.dll</HintPath>
     </Reference>
     <Reference Include="irrKlang.NET4, Version=1.0.6617.18810, Culture=neutral, PublicKeyToken=a854741bd80517c7, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\StarKnights\StarKnightsEpisode1\irrKlang.NET4.dll</HintPath>
+      <HintPath>..\libs\irrKlang.NET4.dll</HintPath>
     </Reference>
     <Reference Include="OpenTK, Version=3.0.0.0, Culture=neutral, PublicKeyToken=bad199fe84eb3df4, processorArchitecture=MSIL">
       <HintPath>..\StarGame\packages\OpenTK.3.0.0\lib\net20\OpenTK.dll</HintPath>
     </Reference>
+    <Reference Include="PhysX.Net, Version=0.11.0.0, Culture=neutral, processorArchitecture=AMD64">
+      <HintPath>..\StarGame\packages\PhysX.Net.0.11.0-alpha\lib\net471\PhysX.Net.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Numerics" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -82,6 +105,7 @@
     <Compile Include="FXS\FXLitImage.cs" />
     <Compile Include="FX\FXG.cs" />
     <Compile Include="FX\VEffect.cs" />
+    <Compile Include="Gen\GeoGen.cs" />
     <Compile Include="Import\VAssImpImp.cs" />
     <Compile Include="Import\VImport.cs" />
     <Compile Include="Import\VImporter.cs" />
@@ -93,6 +117,9 @@
     <Compile Include="Math\Maths.cs" />
     <Compile Include="ParticleSystem\Particle.cs" />
     <Compile Include="ParticleSystem\ParticleEmitter.cs" />
+    <Compile Include="Physics\PhysicsManager.cs" />
+    <Compile Include="Physics\PyObject.cs" />
+    <Compile Include="Physics\PyType.cs" />
     <Compile Include="PostProcess\Processes\VPPBlur.cs" />
     <Compile Include="PostProcess\VPostProcess.cs" />
     <Compile Include="PostProcess\VPostProcessRenderer.cs" />
@@ -104,6 +131,7 @@
     <Compile Include="Resonance\Forms\WindowForm.cs" />
     <Compile Include="Resonance\UI.cs" />
     <Compile Include="Resonance\UIForm.cs" />
+    <Compile Include="Scene\Bounds.cs" />
     <Compile Include="Scene\GraphLight.cs" />
     <Compile Include="Scene\GraphNode.cs" />
     <Compile Include="Scene\GraphParticle3D.cs" />
@@ -181,5 +209,7 @@
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('..\StarGame\packages\AssimpNet.3.3.2\build\AssimpNet.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\StarGame\packages\AssimpNet.3.3.2\build\AssimpNet.targets'))" />
+    <Error Condition="!Exists('..\StarGame\packages\PhysX.Net.0.11.0-alpha\build\PhysX.Net.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\StarGame\packages\PhysX.Net.0.11.0-alpha\build\PhysX.Net.targets'))" />
   </Target>
+  <Import Project="..\StarGame\packages\PhysX.Net.0.11.0-alpha\build\PhysX.Net.targets" Condition="Exists('..\StarGame\packages\PhysX.Net.0.11.0-alpha\build\PhysX.Net.targets')" />
 </Project>

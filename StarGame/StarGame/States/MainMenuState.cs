@@ -30,6 +30,7 @@ using OpenTK;
 using StarEngine.ParticleSystem;
 using StarEngine.PostProcess.Processes;
 using StarEngine.Resonance.Forms;
+using StarEngine.Physics;
 namespace StarKnight.States
 {
     public class MainMenuState : StarState
@@ -96,7 +97,8 @@ namespace StarKnight.States
             ppRen.Scene = scene3d;
 
             Console.WriteLine("Importing mesh.");
-            ent1 = Import.ImportNode("Data\\3D\\Logo\\Menu\\Rebound1.3ds");
+            ent1 = Import.ImportNode("Data\\3D\\box.3ds");
+            var e2 = Import.ImportNode("Data\\3D\\floor.3ds");
             Console.WriteLine("Set up.");
             var mat1 = new Material3D();
             //Console.WriteLine("Loading texture.");
@@ -106,14 +108,23 @@ namespace StarKnight.States
 
 
             var ge = ent1 as GraphEntity3D;
-
+            var g2 = e2 as GraphEntity3D;
             ge.SetMat(mat1);
+            g2.SetMat(mat1);
+
             cam1 = new GraphCam3D();
-            cam1.LocalPos = new OpenTK.Vector3(0, 80, 150);
+            cam1.LocalPos = new OpenTK.Vector3(0, 140, 750);
 
 
             cam1.LookAt(ent1);
 
+            ent1.LocalPos = new Vector3(0, 380, 0);
+
+            var bb = ent1 as GraphEntity3D;
+            var br = bb.Bounds;
+            
+            Console.WriteLine("Bounds:" + br.W +" " + br.H + " " + br.D);
+         
 
 
 
@@ -135,7 +146,7 @@ namespace StarKnight.States
 
 
             scene3d.Add(ent1);
-
+            scene3d.Add(e2);
            //scene3d.Add(l2);
 
 
@@ -157,6 +168,16 @@ namespace StarKnight.States
             pb2 = new Particle(32, 32);
             pb1.Tex = new VTex2D("Data\\particle\\part1.png",LoadMethod.Single,true);
             pb2.Tex = new VTex2D("Data\\particle\\part2.png", LoadMethod.Single, true);
+
+            Console.WriteLine("Setting up physicsSDK.");
+            PhysicsManager.InitSDK();
+            var ge1 = ent1 as GraphEntity3D;
+            var gr2 = e2 as GraphEntity3D;
+
+            ge1.EnablePy(PyType.Box);
+            gr2.EnablePy(PyType.Mesh);
+
+            Console.WriteLine("Setup ok.");
 
 
         }
