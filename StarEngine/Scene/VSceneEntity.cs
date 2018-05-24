@@ -126,7 +126,9 @@ namespace StarEngine.Scene
                 for(int i = 0; i < m.NumVertices; i++)
                 {
                     int vid = i * 3;
-                    verts.Add(new Vector3(m.Vertices[vid], m.Vertices[vid + 1], m.Vertices[vid + 2]));
+                    var nv = new Vector3(m.Vertices[vid], m.Vertices[vid + 1], m.Vertices[vid + 2]);
+                    nv = Vector3.TransformPosition(nv, node.World);
+                    verts.Add(nv);
                     // verts.Add(m.Vertices[vid]);
                   //  verts.Add(m.Vertices[vid + 1]);
                 //    verts.Add(m.Vertices[vid + 2]);

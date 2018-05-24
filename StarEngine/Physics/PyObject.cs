@@ -49,7 +49,10 @@ namespace StarEngine.Physics
             int vi = 0;
             foreach (var v in verts)
             {
+
+
                 rvert[vi] = new System.Numerics.Vector3(v.X, v.Y, v.Z);
+
                 vi++;
             }
 
@@ -116,7 +119,9 @@ namespace StarEngine.Physics
 
             System.Numerics.Matrix4x4 tp = new System.Numerics.Matrix4x4(m11, m12, m13, m14, m21, m22, m23, m24, m31, m32, m33, m34, m41, m42, m43, m44);
 
-            RID.GlobalPose = System.Numerics.Matrix4x4.CreateRotationX(-(float)System.Math.PI / 2);
+           // RID.GlobalPose = System.Numerics.Matrix4x4.CreateRotationX(-(float)System.Math.PI / 2);
+            //RID.GlobalPosePosition = ent.LocalPos;
+
 
             PhysicsManager.Scene.AddActor(RID);
 

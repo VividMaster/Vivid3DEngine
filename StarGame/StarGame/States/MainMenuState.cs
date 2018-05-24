@@ -122,7 +122,7 @@ namespace StarKnight.States
             g2.SetMat(mat1);
 
             cam1 = new GraphCam3D();
-            cam1.LocalPos = new OpenTK.Vector3(0, 5,30);
+            cam1.LocalPos = new OpenTK.Vector3(0, 50,60);
 
 
             cam1.LookAt(ent1);
@@ -195,7 +195,7 @@ namespace StarKnight.States
         public override void UpdateState()
         {
             //  Console.WriteLine("Update");
-            PhysicsManager.Update(0.01f);
+            PhysicsManager.Update(0.08f);
             UI.Update();
             //pe1.Update();
             scene3d.Update();
