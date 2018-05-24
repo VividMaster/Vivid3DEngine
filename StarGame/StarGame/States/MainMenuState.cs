@@ -95,10 +95,19 @@ namespace StarKnight.States
             scene3d = new SceneGraph3D();
 
             ppRen.Scene = scene3d;
-
+           
             Console.WriteLine("Importing mesh.");
+            AssImpImport.ScaleX = 0.02f;
+            AssImpImport.ScaleY = 0.02f;
+            AssImpImport.ScaleZ = 0.02f;
             ent1 = Import.ImportNode("Data\\3D\\box.3ds");
+            AssImpImport.ScaleX = 1;
+            AssImpImport.ScaleY = 1;
+            AssImpImport.ScaleZ = 1;
+
             var e2 = Import.ImportNode("Data\\3D\\floor.3ds");
+            var e3 = e2 as GraphEntity3D;
+           // e3.ScaleMeshes(10, 1, 10);
             Console.WriteLine("Set up.");
             var mat1 = new Material3D();
             //Console.WriteLine("Loading texture.");
@@ -113,12 +122,12 @@ namespace StarKnight.States
             g2.SetMat(mat1);
 
             cam1 = new GraphCam3D();
-            cam1.LocalPos = new OpenTK.Vector3(0, 140, 750);
+            cam1.LocalPos = new OpenTK.Vector3(0, 5,30);
 
 
             cam1.LookAt(ent1);
 
-            ent1.LocalPos = new Vector3(0, 380, 0);
+            ent1.LocalPos = new Vector3(0, 30, 0);
 
             var bb = ent1 as GraphEntity3D;
             var br = bb.Bounds;
@@ -185,7 +194,8 @@ namespace StarKnight.States
         Particle pb2;
         public override void UpdateState()
         {
-          //  Console.WriteLine("Update");
+            //  Console.WriteLine("Update");
+            PhysicsManager.Update(0.01f);
             UI.Update();
             //pe1.Update();
             scene3d.Update();

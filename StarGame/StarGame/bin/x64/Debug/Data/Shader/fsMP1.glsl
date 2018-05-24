@@ -59,10 +59,10 @@ void main(){
 
 
     float shadow = 0.0;
-    float bias = 15.0;
-    int samples = 20;
+    float bias = 5;
+    int samples = 8;
     float viewDistance = length(viewPos - fragPos);
-    float diskRadius = (1.0 + (viewDistance/lightDepth)) / 340.0;
+    float diskRadius = 0.001;
     vec3 fragToLight = fragPos - lightPos;
     float currentDepth = length(fragToLight);
     fragToLight = normalize(fragToLight);

@@ -16,9 +16,30 @@ namespace StarEngine.Physics
                 Console.WriteLine("ErrCode:" + errorCode.ToString() + " Msg:" + message + " File:" + file + " line:" + lineNumber);
             }
         }
+        public static List<PyObject> Objs = new List<PyObject>();
+
         public static PhysX.Physics py;
         public static SceneDesc SceneD;
         public static PhysX.Scene Scene;
+        public static void AddObj(PyObject obj)
+        {
+            Objs.Add(obj);
+        }
+
+        public static void Update(float time)
+        {
+
+            Scene.Simulate(time);
+            Scene.FetchResults(block: true);
+            foreach(var obj in Objs)
+            {
+                if (obj is PyDynamic)
+                {
+                    obj.Grab();
+                }
+            }
+        }
+        public static PhysX.VisualDebugger.Pvd pvd;
         public static void InitSDK()
         {
             void er()
@@ -26,10 +47,18 @@ namespace StarEngine.Physics
 
             }
             Foundation fd = new Foundation(new ECB());
-            py = new PhysX.Physics(fd);
+            pvd = new Pvd(fd);
+            py = new PhysX.Physics(fd,true,pvd);
             SceneD = new SceneDesc();
+     
             SceneD.Gravity = new System.Numerics.Vector3(0, -9, 0);
             Scene = py.CreateScene(SceneD);
+            Scene.SetVisualizationParameter(VisualizationParameter.Scale, 2.0f);
+            Scene.SetVisualizationParameter(VisualizationParameter.CollisionShapes, true);
+            Scene.SetVisualizationParameter(VisualizationParameter.ActorAxes, true);
+            py.Pvd.Connect("localhost");
+           // Scene.Gravity = new System.Numerics.Vector3(0, 0, 0);
+                      
             //PhysX.Material dm = Scene.get
 
 

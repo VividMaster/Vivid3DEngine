@@ -35,6 +35,16 @@ namespace StarEngine.Data
                 return Indices.Length;
             }
         }
+        public void Scale(float x,float y,float z)
+        {
+            for(int i = 0; i < NumVertices; i++)
+            {
+                int vid = i * 3;
+                Vertices[vid] *= x;
+                Vertices[vid + 1] *= y;
+                Vertices[vid + 2] *= z;
+            }
+        }
         public VMesh(int indices,int vertices)
         {
             //Data = new VVertex3D(vertices);

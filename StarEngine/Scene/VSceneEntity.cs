@@ -78,7 +78,7 @@ namespace StarEngine.Scene
             }
         }
         public Physics.PyType PyType;
-        public Physics.PyDynamic PO = null;
+        public Physics.PyObject PO = null;
         public void EnablePy(Physics.PyType type)
         {
             PyType = type;
@@ -88,7 +88,7 @@ namespace StarEngine.Scene
                     PO = new Physics.PyDynamic(type,this);
                     break;
                 case Physics.PyType.Mesh:
-                    PO = new Physics.PyDynamic(type, this);
+                    PO = new Physics.PyStatic(this);
                     break;
 
             }
@@ -101,6 +101,22 @@ namespace StarEngine.Scene
                 List<Vector3> verts = new List<Vector3>();
                 GetVerts(verts, this);
                 return verts;
+            }
+
+        }
+        public void ScaleMeshes(float x,float y,float z)
+        {
+            DScale(x, y, z, this);
+        }
+        private void DScale(float x,float y,float z,GraphEntity3D node)
+        {
+            foreach(var m in node.Meshes)
+            {
+                m.Scale(x, y, z);
+            }
+            foreach(var snode in node.Sub)
+            {
+                DScale(x, y, z, snode as GraphEntity3D);
             }
         }
         public void GetVerts(List<Vector3> verts,GraphEntity3D node)

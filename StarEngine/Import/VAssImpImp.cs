@@ -14,6 +14,7 @@ namespace StarEngine.Import
     public class AssImpImport : Importer
     {
         public static string IPath = "";
+        public static float ScaleX = 1, ScaleY = 1, ScaleZ = 1;
 
         public override GraphNode3D LoadNode(string path)
         {
@@ -123,7 +124,7 @@ namespace StarEngine.Import
                 }
 
                 m2.Indices = nd;
-
+                m2.Scale(AssImpImport.ScaleX, AssImpImport.ScaleY, AssImpImport.ScaleZ);
                 m2.Final();
          
             }
