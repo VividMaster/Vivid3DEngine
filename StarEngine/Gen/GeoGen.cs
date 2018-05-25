@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using StarEngine.Scene;
-using StarEngine.Data;
+using Vivid3D.Scene;
+using Vivid3D.Data;
 using OpenTK;
-namespace StarEngine.Gen
+namespace Vivid3D.Gen
 {
     public class GeoGen
     {

@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using OpenTK;
-using StarEngine.Scene;
-using StarEngine.Data;
-namespace StarEngine.Effect
+using Vivid3D.Scene;
+using Vivid3D.Data;
+namespace Vivid3D.Effect
 {
     public static class FXG
     {

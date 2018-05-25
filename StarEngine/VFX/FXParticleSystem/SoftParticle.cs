@@ -4,8 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using OpenTK;
-using StarEngine.Util;
-namespace StarEngine.VFX
+using Vivid3D.Util;
+namespace Vivid3D.VFX
 {
     public class SoftParticle : ParticleBase
     {
@@ -21,8 +21,8 @@ namespace StarEngine.VFX
             
             var g = VFX.VisualFX.Graph;
 
-            int sw = StarEngine.App.StarApp.W;
-            int sh = StarEngine.App.StarApp.H;
+            int sw = Vivid3D.App.StarApp.W;
+            int sh = Vivid3D.App.StarApp.H;
 
             float[] ox = new float[4];
             float[] oy = new float[4];

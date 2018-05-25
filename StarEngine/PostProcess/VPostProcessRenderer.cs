@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using StarEngine.Scene;
-using StarEngine.Data;
-using StarEngine.Material;
-using StarEngine.Effect;
-using StarEngine.FrameBuffer;
+using Vivid3D.Scene;
+using Vivid3D.Data;
+using Vivid3D.Material;
+using Vivid3D.Effect;
+using Vivid3D.FrameBuffer;
 using OpenTK;
 using OpenTK.Graphics.OpenGL4;
-namespace StarEngine.PostProcess
+namespace Vivid3D.PostProcess
 {
     public class PostProcessRender
     {

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace StarEngine.VFX
+namespace Vivid3D.VFX
 {
     public class VFXParticleSystem : VFXBase
     {

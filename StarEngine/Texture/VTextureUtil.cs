@@ -7,7 +7,7 @@ using System.Drawing;
 using System.IO;
 using OpenTK;
 using OpenTK.Graphics.OpenGL4;
-namespace StarEngine.Texture
+namespace Vivid3D.Texture
 {
     public class VTextureUtil
     {

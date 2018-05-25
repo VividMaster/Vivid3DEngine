@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using zlib;
 using System.IO;
 
-namespace StarEngine.Archive
+namespace Vivid3D.Archive
 {
     public class ZLib
     {

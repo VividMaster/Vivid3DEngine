@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using StarEngine.Texture;
-namespace StarEngine.UI
+using Vivid3D.Texture;
+namespace Vivid3D.UI
 {
     public class UIItem
     {

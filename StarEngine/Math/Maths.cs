@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using OpenTK;
-namespace StarEngine.Util
+namespace Vivid3D.Util
 {
     public static class Maths
     {

@@ -7,8 +7,8 @@ using OpenTK;
 using OpenTK.Graphics.OpenGL4;
 using System.Drawing;
 using System.IO;
-using StarEngine.Archive;
-namespace StarEngine.Tex
+using Vivid3D.Archive;
+namespace Vivid3D.Tex
 {
     public class Tex2D : TexBase
     {

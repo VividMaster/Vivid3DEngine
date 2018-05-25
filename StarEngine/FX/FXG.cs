@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using OpenTK;
 
-namespace StarEngine.Effect
+namespace Vivid3D.Effect
 {
    
 }

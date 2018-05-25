@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
-namespace StarEngine.Archive
+namespace Vivid3D.Archive
 {
     public class VirtualFileSystem
     {

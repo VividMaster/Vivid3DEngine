@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using StarEngine.App;
+using Vivid3D.App;
 
-namespace StarEngine.UI.UIWidgets
+namespace Vivid3D.UI.UIWidgets
 {
     public class UIMenu : UIWidget
     {

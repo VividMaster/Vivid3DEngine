@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace StarEngine.Visuals
+namespace Vivid3D.Visuals
 {
     public class VRendererSimple : VRenderer
     {

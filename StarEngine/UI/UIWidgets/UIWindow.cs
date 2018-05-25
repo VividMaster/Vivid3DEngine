@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using StarEngine.UI;
+using Vivid3D.UI;
 using OpenTK;
-namespace StarEngine.UI.UIWidgets
+namespace Vivid3D.UI.UIWidgets
 {
     public class UIWindow : UIWidget
     {
-        public StarEngine.App.StarApp AppLink = null;
+        public Vivid3D.App.StarApp AppLink = null;
         private UIDragZone titleDrag;
         private UIDragZone sizeDrag;
         private UIDragZone rightDrag;

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Reflection;
-namespace StarEngine.Reflect
+namespace Vivid3D.Reflect
 {
     public class ClassIO
     {

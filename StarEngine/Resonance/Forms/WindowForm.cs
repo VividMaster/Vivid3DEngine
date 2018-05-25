@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using StarEngine.Texture;
-using StarEngine.Draw;
+using Vivid3D.Texture;
+using Vivid3D.Draw;
 using OpenTK;
-namespace StarEngine.Resonance.Forms
+namespace Vivid3D.Resonance.Forms
 {
     public class WindowForm : UIForm
     {

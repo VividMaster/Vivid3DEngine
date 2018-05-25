@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using PhysX;
 using PhysX.VisualDebugger;
 using System.IO;
-namespace StarEngine.Physics
+namespace Vivid3D.Physics
 {
     public class PyObject
     {

@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using OpenTK.Input;
-using StarEngine.Input;
+using Vivid3D.Input;
 
-namespace StarEngine.UI.UIWidgets
+namespace Vivid3D.UI.UIWidgets
 {
     public class UITextEntryLine : UIWidget
     {

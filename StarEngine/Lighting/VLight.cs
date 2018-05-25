@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using StarEngine.Scene;
+using Vivid3D.Scene;
 using OpenTK;
-using StarEngine.Settings;
+using Vivid3D.Settings;
 using OpenTK.Graphics.OpenGL4;
-using StarEngine.Texture;
-using StarEngine.FrameBuffer;
-namespace StarEngine.Lighting
+using Vivid3D.Texture;
+using Vivid3D.FrameBuffer;
+namespace Vivid3D.Lighting
 {
     public enum LightType
     {

@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using StarEngine.Scene;
+using Vivid3D.Scene;
 using Assimp;
 using Assimp.Configs;
-using StarEngine.Data;
+using Vivid3D.Data;
 using System.IO;
 
-namespace StarEngine.Import
+namespace Vivid3D.Import
 {
     public class AssImpImport : Importer
     {

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace StarEngine.Cam
+namespace Vivid3D.Cam
 {
     class VCam
     {

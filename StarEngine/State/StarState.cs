@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using StarEngine.Logic;
-using StarEngine.Resonance;
-using StarEngine.Resonance.Forms;
-namespace StarEngine.State
+using Vivid3D.Logic;
+using Vivid3D.Resonance;
+using Vivid3D.Resonance.Forms;
+namespace Vivid3D.State
 {
 
     public class StarState

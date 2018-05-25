@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using StarEngine.Util;
+using Vivid3D.Util;
 using OpenTK;
-using StarEngine.Reflect;
+using Vivid3D.Reflect;
 using System.ComponentModel;
 using System.IO;
-namespace StarEngine.Scene
+namespace Vivid3D.Scene
 {
     
     [DefaultProperty("Name")]
@@ -141,8 +141,8 @@ namespace StarEngine.Scene
         public void SyncCoords()
         {
 
-            int sw = StarEngine.App.StarApp.W;
-            int sh = StarEngine.App.StarApp.H;
+            int sw = Vivid3D.App.StarApp.W;
+            int sh = Vivid3D.App.StarApp.H;
 
             float[] ox = new float[4];
             float[] oy = new float[4];

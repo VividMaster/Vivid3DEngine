@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using StarEngine.Tex;
+using Vivid3D.Tex;
 using OpenTK;
 using System.IO;
-namespace StarEngine.Scene
+namespace Vivid3D.Scene
 {
     public class GraphLight : GraphNode
     {

@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using StarEngine.Lighting;
+using Vivid3D.Lighting;
 using OpenTK;
 using OpenTK.Graphics.OpenGL4;
-namespace StarEngine.Scene
+namespace Vivid3D.Scene
 {
     public class SceneGraph3D
     {

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.IO;
 using OpenTK;
 using OpenTK.Graphics.OpenGL4;
-namespace StarEngine.Effect
+namespace Vivid3D.Effect
 {
    
     public class Effect3D

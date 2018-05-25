@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using StarEngine.Input;
+using Vivid3D.Input;
 using OpenTK;
 using OpenTK.Graphics.OpenGL4;
-namespace StarEngine.UI
+namespace Vivid3D.UI
 {
     public enum DockMode
     {
@@ -37,24 +37,24 @@ namespace StarEngine.UI
         {
             get
             {
-                if (Top == null) return _WidX * StarEngine.App.AppInfo.RW;
-                return Top.WidX + _WidX * StarEngine.App.AppInfo.RW;
+                if (Top == null) return _WidX * Vivid3D.App.AppInfo.RW;
+                return Top.WidX + _WidX * Vivid3D.App.AppInfo.RW;
             }
             set
             {
-                _WidX = value / StarEngine.App.AppInfo.RW;
+                _WidX = value / Vivid3D.App.AppInfo.RW;
             }
         }
         public float WidY
         {
             get
             {
-                if (Top == null) return _WidY * StarEngine.App.AppInfo.RH;
-                return Top.WidY + _WidY * StarEngine.App.AppInfo.RH;
+                if (Top == null) return _WidY * Vivid3D.App.AppInfo.RH;
+                return Top.WidY + _WidY * Vivid3D.App.AppInfo.RH;
             }
             set
             {
-                _WidY = value / (float)StarEngine.App.AppInfo.RH;
+                _WidY = value / (float)Vivid3D.App.AppInfo.RH;
             }
         }
         public float LocX
@@ -75,7 +75,7 @@ namespace StarEngine.UI
         {
             get
             {
-                return _WidW * StarEngine.App.AppInfo.RW;
+                return _WidW * Vivid3D.App.AppInfo.RW;
             }
             set
             {
@@ -88,7 +88,7 @@ namespace StarEngine.UI
         {
             get
             {
-                return _WidH * StarEngine.App.AppInfo.H;
+                return _WidH * Vivid3D.App.AppInfo.H;
             }
             set
             {
@@ -587,8 +587,8 @@ namespace StarEngine.UI
             WidH = h;
             Resized();
         }
-        public List<StarEngine.UI.UIWidgets.UIPatch> Patches = new List<StarEngine.UI.UIWidgets.UIPatch>();
-        public void AddPatch(StarEngine.UI.UIWidgets.UIPatch p)
+        public List<Vivid3D.UI.UIWidgets.UIPatch> Patches = new List<Vivid3D.UI.UIWidgets.UIPatch>();
+        public void AddPatch(Vivid3D.UI.UIWidgets.UIPatch p)
         {
             Patches.Add(p);
         }
@@ -598,7 +598,7 @@ namespace StarEngine.UI
             if (EnableScissorTest)
             {
                 GL.Enable(EnableCap.ScissorTest);
-                GL.Scissor((int)WidX, StarEngine.App.AppInfo.H - ((int)WidY + (int)WidH), (int)WidW, (int)WidH);
+                GL.Scissor((int)WidX, Vivid3D.App.AppInfo.H - ((int)WidY + (int)WidH), (int)WidW, (int)WidH);
                 GL.Viewport((int)WidX, (int)WidY, (int)WidW, (int)WidH);
 
             }
@@ -607,7 +607,7 @@ namespace StarEngine.UI
             if (EnableScissorTest)
             {
                 GL.Enable(EnableCap.ScissorTest);
-                GL.Scissor((int)WidX,StarEngine.App.AppInfo.H-((int)WidY+(int)WidH), (int)WidW, (int)WidH);
+                GL.Scissor((int)WidX,Vivid3D.App.AppInfo.H-((int)WidY+(int)WidH), (int)WidW, (int)WidH);
                 GL.Viewport((int)WidX, (int)WidY, (int)WidW, (int)WidH);
 
                 foreach (var w in Sub)

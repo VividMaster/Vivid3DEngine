@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using StarEngine.Texture;
-using StarEngine.Tex;
-namespace StarEngine.Material
+using Vivid3D.Texture;
+using Vivid3D.Tex;
+namespace Vivid3D.Material
 {
     public class Material3D
     {

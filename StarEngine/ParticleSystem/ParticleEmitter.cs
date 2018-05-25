@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using OpenTK;
-using StarEngine.Texture;
-using StarEngine.Material;
-using StarEngine.Effect;
-using StarEngine.Visuals;
-namespace StarEngine.ParticleSystem
+using Vivid3D.Texture;
+using Vivid3D.Material;
+using Vivid3D.Effect;
+using Vivid3D.Visuals;
+namespace Vivid3D.ParticleSystem
 {
     public class ParticleEmitter
     {

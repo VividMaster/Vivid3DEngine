@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace StarEngine.Physics
+namespace Vivid3D.Physics
 {
     public enum PyType
     {

@@ -3,34 +3,34 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using StarEngine;
-using StarEngine.App;
-using StarEngine.Draw;
-using StarEngine.FX;
-using StarEngine.FXS;
-using StarEngine.Input;
-using StarEngine.Scene;
-using StarEngine.Tex;
-using StarEngine.Util;
-using StarEngine.VFX;
-using StarEngine.Sound;
-using StarEngine.Reflect;
+using Vivid3D;
+using Vivid3D.App;
+using Vivid3D.Draw;
+using Vivid3D.FX;
+using Vivid3D.FXS;
+using Vivid3D.Input;
+using Vivid3D.Scene;
+using Vivid3D.Tex;
+using Vivid3D.Util;
+using Vivid3D.VFX;
+using Vivid3D.Sound;
+using Vivid3D.Reflect;
 using System.Reflection;
-using StarEngine.Archive;
-using StarEngine.Lighting;
-using StarEngine.PostProcess;
-using StarEngine.Import;
-using StarEngine.Material;
-using StarEngine.State;
-using StarEngine.Texture;
-using StarEngine.Logic;
-using StarEngine.Resonance;
-using StarEngine.App;
+using Vivid3D.Archive;
+using Vivid3D.Lighting;
+using Vivid3D.PostProcess;
+using Vivid3D.Import;
+using Vivid3D.Material;
+using Vivid3D.State;
+using Vivid3D.Texture;
+using Vivid3D.Logic;
+using Vivid3D.Resonance;
+using Vivid3D.App;
 using OpenTK;
-using StarEngine.ParticleSystem;
-using StarEngine.PostProcess.Processes;
-using StarEngine.Resonance.Forms;
-using StarEngine.Physics;
+using Vivid3D.ParticleSystem;
+using Vivid3D.PostProcess.Processes;
+using Vivid3D.Resonance.Forms;
+using Vivid3D.Physics;
 namespace StarKnight.States
 {
     public class MainMenuState : StarState
@@ -62,7 +62,7 @@ namespace StarKnight.States
 
 
 
-            UI.Root = new ImageForm().Set(0, 0, StarEngine.App.StarApp.W, StarEngine.App.StarApp.H,"ImageForm").SetImage(MenuBG);
+            UI.Root = new ImageForm().Set(0, 0, Vivid3D.App.StarApp.W, Vivid3D.App.StarApp.H,"ImageForm").SetImage(MenuBG);
 
             WindowForm win1 = (WindowForm)(new WindowForm().Set(40, 100, 260, 400, "Star Knights"));
 
@@ -111,7 +111,7 @@ namespace StarKnight.States
 
             };
 
-            ppRen = new StarEngine.PostProcess.PostProcessRender(512, 512);
+            ppRen = new Vivid3D.PostProcess.PostProcessRender(512, 512);
             Console.WriteLine("Creating 3D Scene graph.");
             scene3d = new SceneGraph3D();
 
@@ -158,9 +158,9 @@ namespace StarKnight.States
 
 
 
-            light1 = new StarEngine.Lighting.GraphLight3D();
-            var l2 = new StarEngine.Lighting.GraphLight3D();
-            var l3 = new StarEngine.Lighting.GraphLight3D();
+            light1 = new Vivid3D.Lighting.GraphLight3D();
+            var l2 = new Vivid3D.Lighting.GraphLight3D();
+            var l3 = new Vivid3D.Lighting.GraphLight3D();
 
             l3.LocalPos = new OpenTK.Vector3(30, 80, 45);
             l3.Diff = new OpenTK.Vector3(0, 1, 2);
@@ -301,9 +301,9 @@ namespace StarKnight.States
      //           fx1 = new EVelBuf();
             }
     
-   //         StarEngine.Effect.FXG.FXOverride = fx1;
+   //         Vivid3D.Effect.FXG.FXOverride = fx1;
             //scene3d.RenderNoLights();
-           // StarEngine.Effect.FXG.FXOverride = null;
+           // Vivid3D.Effect.FXG.FXOverride = null;
 
             //ppRen.Render();
 

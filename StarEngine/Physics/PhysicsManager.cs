@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using PhysX;
 using PhysX.VisualDebugger;
-namespace StarEngine.Physics
+namespace Vivid3D.Physics
 {
     public class PhysicsManager
     {

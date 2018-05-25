@@ -3,27 +3,27 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using StarEngine;
-using StarEngine.App;
-using StarEngine.Draw;
-using StarEngine.FX;
-using StarEngine.FXS;
-using StarEngine.Input;
-using StarEngine.Scene;
-using StarEngine.Tex;
-using StarEngine.Util;
-using StarEngine.VFX;
-using StarEngine.Sound;
-using StarEngine.Reflect;
+using Vivid3D;
+using Vivid3D.App;
+using Vivid3D.Draw;
+using Vivid3D.FX;
+using Vivid3D.FXS;
+using Vivid3D.Input;
+using Vivid3D.Scene;
+using Vivid3D.Tex;
+using Vivid3D.Util;
+using Vivid3D.VFX;
+using Vivid3D.Sound;
+using Vivid3D.Reflect;
 using System.Reflection;
-using StarEngine.Archive;
-using StarEngine.Lighting;
-using StarEngine.PostProcess;
-using StarEngine.Import;
-using StarEngine.Material;
-using StarEngine.State;
-using StarEngine.Texture;
-using StarEngine.Logic;
+using Vivid3D.Archive;
+using Vivid3D.Lighting;
+using Vivid3D.PostProcess;
+using Vivid3D.Import;
+using Vivid3D.Material;
+using Vivid3D.State;
+using Vivid3D.Texture;
+using Vivid3D.Logic;
 namespace StarKnight.States
 {
     public class LogosState : StarState
@@ -31,15 +31,15 @@ namespace StarKnight.States
 
         public int LS = 0;
         public float LogoAlpha = 0.0f;
-        public StarEngine.Texture.VTex2D LogoTex = null;
-        public StarEngine.Texture.VTex2D PresTex = null;
-        public StarEngine.Texture.VTex2D GameTex = null;
-        public StarEngine.Sound.VSound ms;
+        public Vivid3D.Texture.VTex2D LogoTex = null;
+        public Vivid3D.Texture.VTex2D PresTex = null;
+        public Vivid3D.Texture.VTex2D GameTex = null;
+        public Vivid3D.Sound.VSound ms;
         public override void InitState()
         {
 
             Console.WriteLine("Loading logo tex.");
-            LogoTex = new StarEngine.Texture.VTex2D("Data\\2D\\Logo\\DarkArtLogo.png", LoadMethod.Single);
+            LogoTex = new Vivid3D.Texture.VTex2D("Data\\2D\\Logo\\DarkArtLogo.png", LoadMethod.Single);
             PresTex = new VTex2D("Data\\2D\\Logo\\Presents.png", LoadMethod.Single);
             GameTex = new VTex2D("Data\\2D\\Logo\\sklogo1.png", LoadMethod.Single);
             Console.WriteLine("Loaded.");

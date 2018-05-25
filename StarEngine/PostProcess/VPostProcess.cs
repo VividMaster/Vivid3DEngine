@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using StarEngine.Texture;
+using Vivid3D.Texture;
 using OpenTK;
 using OpenTK.Graphics.OpenGL4;
-namespace StarEngine.PostProcess
+namespace Vivid3D.PostProcess
 {
     public class VPostProcess
     {

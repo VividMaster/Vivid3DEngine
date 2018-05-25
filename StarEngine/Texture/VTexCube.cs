@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using OpenTK;
 using OpenTK.Graphics.OpenGL4;
 using System.Drawing;
-namespace StarEngine.Texture
+namespace Vivid3D.Texture
 {
     public class VTexCube : VTexBase
     {

@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.27428.2043
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StarGame", "StarGame\StarGame.csproj", "{67FF5093-6CD7-45EA-AAF0-E0275FB735CC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StarEngine2", "..\StarEngine\StarEngine2.csproj", "{332C9868-8B63-411D-B2C2-D0080742B8F6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vivid3D", "..\StarEngine\Vivid3D.csproj", "{332C9868-8B63-411D-B2C2-D0080742B8F6}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Editors", "Editors", "{C0233333-11C0-4FB3-8EEF-F795875C22C5}"
 EndProject

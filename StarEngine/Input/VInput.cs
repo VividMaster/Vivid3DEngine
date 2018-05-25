@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using OpenTK;
 using OpenTK.Input;
-namespace StarEngine.Input
+namespace Vivid3D.Input
 {
     public class VInput
     {

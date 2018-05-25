@@ -4,8 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using OpenTK;
-using StarEngine.App;
-namespace StarEngine.Scene
+using Vivid3D.App;
+namespace Vivid3D.Scene
 {
     public class GraphCam3D : GraphNode3D
     {

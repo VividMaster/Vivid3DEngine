@@ -9,7 +9,7 @@ using System.Drawing;
 using OpenTK;
 using OpenTK.Graphics.OpenGL4;
 
-namespace StarEngine.Texture
+namespace Vivid3D.Texture
 {
     public enum LoadMethod
     {

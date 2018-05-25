@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using StarEngine.Texture;
+using Vivid3D.Texture;
 using System.IO;
-namespace StarEngine.Font
+namespace Vivid3D.Font
 {
     public class VFont
     {

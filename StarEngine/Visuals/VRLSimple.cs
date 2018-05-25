@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using StarEngine.Data;
+using Vivid3D.Data;
 
-namespace StarEngine.Visuals
+namespace Vivid3D.Visuals
 {
     public class VRLSimple : VRenderLayer
     {

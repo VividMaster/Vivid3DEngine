@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using StarEngine.Input;
-namespace StarEngine.UI.UIWidgets
+using Vivid3D.Input;
+namespace Vivid3D.UI.UIWidgets
 {
     public delegate void Dragged(int dx,int dy);
     public class UIDragZone : UIWidget

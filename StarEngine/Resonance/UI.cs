@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using StarEngine.Font;
-using StarEngine.Input;
-using StarEngine.Logic;
+using Vivid3D.Font;
+using Vivid3D.Input;
+using Vivid3D.Logic;
 
-namespace StarEngine.Resonance
+namespace Vivid3D.Resonance
 {
     public class UI
     {

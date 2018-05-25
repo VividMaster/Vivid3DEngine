@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using StarEngine.Effect;
-using StarEngine.Texture;
-namespace StarEngine.PostProcess.Processes
+using Vivid3D.Effect;
+using Vivid3D.Texture;
+namespace Vivid3D.PostProcess.Processes
 {
     public class VPPBlur : VPostProcess
     {

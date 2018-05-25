@@ -12,7 +12,7 @@ namespace StarKnight
         {
             var logoState = new States.LogosState();
 
-            StarEngine.App.StarApp.InitState = logoState;
+            Vivid3D.App.StarApp.InitState = logoState;
 
             var game = new StarGame(800, 600, false);
 

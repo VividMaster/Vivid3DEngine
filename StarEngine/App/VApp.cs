@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 using OpenTK;
 using OpenTK.Graphics.OpenGL4;
 
-using StarEngine.Draw;
-using StarEngine.Import;
+using Vivid3D.Draw;
+using Vivid3D.Import;
 using OpenTK.Input;
-using StarEngine.Input;
-using StarEngine.State;
-namespace StarEngine.App
+using Vivid3D.Input;
+using Vivid3D.State;
+namespace Vivid3D.App
 {
     public static class AppInfo
     {
@@ -139,7 +139,7 @@ namespace StarEngine.App
             RH = height;
             Import.Import.RegDefaults();
             VPen.InitDraw();
-            StarEngine.Sound.StarSoundSys.Init();
+            Vivid3D.Sound.StarSoundSys.Init();
    
         }
         protected override void OnMouseDown(MouseButtonEventArgs e)

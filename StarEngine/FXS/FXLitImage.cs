@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using StarEngine.FX;
-using StarEngine.Scene;
-using StarEngine.Util;
-namespace StarEngine.FXS
+using Vivid3D.FX;
+using Vivid3D.Scene;
+using Vivid3D.Util;
+namespace Vivid3D.FXS
 {
     public class FXLitImage : VEffect
     {
@@ -30,8 +30,8 @@ namespace StarEngine.FXS
         public override void SetPars()
         {
             float sw, sh;
-            sw = StarEngine.App.StarApp.W;
-            sh = StarEngine.App.StarApp.H;
+            sw = Vivid3D.App.StarApp.W;
+            sh = Vivid3D.App.StarApp.H;
             float px, py, pz;
 
             // px = Light.X + Graph.X;
@@ -59,8 +59,8 @@ namespace StarEngine.FXS
             SetVec3("lSpec", Light.Specular);
             SetFloat("lShiny", Light.Shiny);
             SetFloat("lRange", Light.Range * Graph.Z);
-            SetFloat("sWidth", StarEngine.App.StarApp.W);
-            SetFloat("sHeight", StarEngine.App.StarApp.H);
+            SetFloat("sWidth", Vivid3D.App.StarApp.W);
+            SetFloat("sHeight", Vivid3D.App.StarApp.H);
 
         }
     }

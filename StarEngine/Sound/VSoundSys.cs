@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using IrrKlang;
 
-namespace StarEngine.Sound
+namespace Vivid3D.Sound
 {
     public static class StarSoundSys
     {

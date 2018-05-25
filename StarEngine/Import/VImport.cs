@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using StarEngine.Scene;
+using Vivid3D.Scene;
 using System.IO;
-namespace StarEngine.Import
+namespace Vivid3D.Import
 {
     public static class Import
     {

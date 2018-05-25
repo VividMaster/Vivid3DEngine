@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using StarEngine.Resonance;
-using StarEngine.Texture;
-namespace StarEngine.Resonance.Forms
+using Vivid3D.Resonance;
+using Vivid3D.Texture;
+namespace Vivid3D.Resonance.Forms
 {
 
     public class ImageForm : UIForm

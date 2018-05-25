@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace StarEngine.Tex
+namespace Vivid3D.Tex
 {
     public class TexBase
     {

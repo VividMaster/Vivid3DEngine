@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using StarEngine.Scene;
-using StarEngine.Tex;
-using StarEngine.Util;
+using Vivid3D.Scene;
+using Vivid3D.Tex;
+using Vivid3D.Util;
 
-namespace StarEngine.VFX
+namespace Vivid3D.VFX
 {
     public class ParticleBase
     {

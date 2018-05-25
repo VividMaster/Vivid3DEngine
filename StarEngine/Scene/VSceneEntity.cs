@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using StarEngine.Data;
-using StarEngine.Visuals;
+using Vivid3D.Data;
+using Vivid3D.Visuals;
 using OpenTK;
 using OpenTK.Graphics.OpenGL4;
-using StarEngine.Material;
-namespace StarEngine.Scene
+using Vivid3D.Material;
+namespace Vivid3D.Scene
 {
     public class GraphEntity3D : GraphNode3D
     {

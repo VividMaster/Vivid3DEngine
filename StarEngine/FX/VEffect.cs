@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.IO;
 using OpenTK;
 using OpenTK.Graphics.OpenGL4;
-namespace StarEngine.FX
+namespace Vivid3D.FX
 {
    
     public class VEffect

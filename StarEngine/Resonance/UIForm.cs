@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using StarEngine.Texture;
-using StarEngine.Draw;
+using Vivid3D.Texture;
+using Vivid3D.Draw;
 using OpenTK;
-using StarEngine.Logic;
-using StarEngine.Font;
-namespace StarEngine.Resonance
+using Vivid3D.Logic;
+using Vivid3D.Font;
+namespace Vivid3D.Resonance
 {
     public delegate void Draw();
     public delegate void Update();

@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 using OpenTK;
 using OpenTK.Graphics.OpenGL4;
 using OpenTK.Graphics;
-using StarEngine.Effect;
-using StarEngine.Texture;
-using StarEngine.App;
-namespace StarEngine.Draw
+using Vivid3D.Effect;
+using Vivid3D.Texture;
+using Vivid3D.App;
+namespace Vivid3D.Draw
 {
     public class VEQuad : Effect3D
     {

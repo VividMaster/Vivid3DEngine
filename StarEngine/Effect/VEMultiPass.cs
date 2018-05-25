@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace StarEngine.Effect
+namespace Vivid3D.Effect
 {
     public class EMultiPass3D : Effect3D
     {

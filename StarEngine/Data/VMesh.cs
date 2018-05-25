@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using OpenTK;
-using StarEngine.Material;
-using StarEngine.Visuals;
-namespace StarEngine.Data
+using Vivid3D.Material;
+using Vivid3D.Visuals;
+namespace Vivid3D.Data
 {
     public class VMesh
     {

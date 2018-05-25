@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace StarEngine.Material
+namespace Vivid3D.Material
 {
     public class MaterialParticle3D : Material3D
     {

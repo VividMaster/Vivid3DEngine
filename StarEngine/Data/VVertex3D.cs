@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using OpenTK;
-namespace StarEngine.Data
+namespace Vivid3D.Data
 {
     public class VVertex3D : VVertexData<float>
     {

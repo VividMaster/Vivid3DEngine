@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace StarEngine.UI
+namespace Vivid3D.UI
 {
     public class UIEventHandler
     {

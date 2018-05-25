@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace StarEngine.Settings
+namespace Vivid3D.Settings
 {
     public static class Quality
     {

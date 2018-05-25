@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace StarEngine.Data
+namespace Vivid3D.Data
 {
     public class VInfoMap<T,D>
     {

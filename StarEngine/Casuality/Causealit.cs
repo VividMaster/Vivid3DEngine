@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
-namespace StarEngine.Logic
+namespace Vivid3D.Logic
 {
     public delegate void Act();
     public delegate bool Until();
