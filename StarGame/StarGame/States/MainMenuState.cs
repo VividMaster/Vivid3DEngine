@@ -66,16 +66,37 @@ namespace StarKnight.States
 
             WindowForm win1 = (WindowForm)(new WindowForm().Set(40, 100, 260, 400, "Star Knights"));
 
+            UI.Root = win1;
+           
+
             win1.NoResize();
 
 
             
 
-            UI.Root.Add(win1);
+           // UI.Root.Add(win1);
 
 
-            win1.Add(new ButtonForm().Set(20, 30, 200, 25, "Versus AI"));
-            win1.Add(new ButtonForm().Set(20,60,200,25,"Multiplayer"));
+            var b1 = new ButtonForm().Set(20, 30, 200, 25, "Less");
+            var b2 = new ButtonForm().Set(20,60,200,25,"More");
+
+            win1.Add(b1);
+            win1.Add(b2);
+
+            void LessFunc(int b)
+            {
+                dc = dc - 0.1f;
+                Console.WriteLine("DC:" + dc);
+
+            }
+            void MoreFunc(int b)
+            {
+                dc = dc + 0.1f;
+                Console.WriteLine("DC:" + dc);
+            }
+
+            b1.Click = LessFunc;
+            b2.Click = MoreFunc;
 
 
             var test = win1.Forms[0];
@@ -141,10 +162,10 @@ namespace StarKnight.States
             var l2 = new StarEngine.Lighting.GraphLight3D();
             var l3 = new StarEngine.Lighting.GraphLight3D();
 
-            l3.LocalPos = new OpenTK.Vector3(300, 80, 450);
+            l3.LocalPos = new OpenTK.Vector3(30, 80, 45);
             l3.Diff = new OpenTK.Vector3(0, 1, 2);
 
-            l2.LocalPos = new OpenTK.Vector3(5, 200, 500);
+            l2.LocalPos = new OpenTK.Vector3(5, 20, 50);
             l2.Diff = new OpenTK.Vector3(2, 2, 1);
 
 
@@ -156,10 +177,10 @@ namespace StarKnight.States
 
             scene3d.Add(ent1);
             scene3d.Add(e2);
-           //scene3d.Add(l2);
+           scene3d.Add(l2);
 
 
-         //   scene3d.Add(l3);
+            scene3d.Add(l3);
 
             scene3d.Add(light1);
 
@@ -167,9 +188,14 @@ namespace StarKnight.States
 
             light1.Diff = new OpenTK.Vector3(3, 3, 3);
 
-            ppRen.Add(new VPPBlur());
-            VPPBlur  bp = (VPPBlur)ppRen.Processes[0];
-            bp.Blur = 0.1f;
+
+            var mbpp = new PPMotionBlur();
+            ppRen.Add(mbpp);
+
+            //ppRen.Add(new VPPBlur());
+            //VPPBlur  bp = (VPPBlur)ppRen.Processes[0];
+
+            //bp.Blur = 0.9f;
 
             pe1 = new ParticleEmitter();
             pe1.Graph = scene3d;
@@ -185,7 +211,7 @@ namespace StarKnight.States
 
             ge1.EnablePy(PyType.Box);
             gr2.EnablePy(PyType.Mesh);
-
+            scene3d.BeginFrame();
             Console.WriteLine("Setup ok.");
 
 
@@ -238,6 +264,7 @@ namespace StarKnight.States
             }
             if (VInput.MB[1])
             {
+                /*
                 Random rnd = new Random(Environment.TickCount);
 
                 Vector3 ri = new Vector3(rnd.Next(-4, 4), rnd.Next(-4, 4), rnd.Next(-4, 4));
@@ -248,7 +275,7 @@ namespace StarKnight.States
                 ri = new Vector3(rnd.Next(-4, 4), rnd.Next(-4, 4), rnd.Next(-4, 4));
 
                 pe1.Emit(pb2, new Vector3(0, 10, 0), ri);
-
+                */
 
             }
             int xd, yd;
@@ -262,23 +289,43 @@ namespace StarKnight.States
             yd = VInput.MY - ly;
             lx = VInput.MX;
             ly = VInput.MY;
-            cam1.Turn(new OpenTK.Vector3(-yd, -xd, 0), Space.Local);
-
+           
+                cam1.Turn(new OpenTK.Vector3(-yd, -xd, 0), Space.Local);
+           
             //ppRen.Render();
             scene3d.RenderShadows();
-            scene3d.Render();
-            pe1.Render();
+            ppRen.Render();
+
+            if (fx1 == null)
+            {
+     //           fx1 = new EVelBuf();
+            }
+    
+   //         StarEngine.Effect.FXG.FXOverride = fx1;
+            //scene3d.RenderNoLights();
+           // StarEngine.Effect.FXG.FXOverride = null;
+
+            //ppRen.Render();
+
+            //scene3d.Render();
+
+            scene3d.BeginFrame();
+
+            //pe1.Render();
             //scene3d.Render();
             //ppRen.Render();
 
 
 
 
- //           UI.Render();
+
+
+          //  UI.Render();
 
 
         }
-
+        float dc = 0;
+        EVelBuf fx1 = null;
 
     }
 }

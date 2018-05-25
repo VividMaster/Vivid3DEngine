@@ -15,6 +15,22 @@ namespace StarEngine.Scene
         public List<GraphLight3D> Lights = new List<GraphLight3D>();
         public GraphCam3D CamOverride = null;
         public GraphNode3D Root = new GraphNode3D();
+        public void BeginFrame()
+        {
+            BeginFrameNode(Root);
+            foreach(var c in Cams)
+            {
+                c.StartFrame();
+            }
+        }
+        public void BeginFrameNode(GraphNode3D node)
+        {
+            node.StartFrame();
+            foreach(var snode in node.Sub)
+            {
+                BeginFrameNode(snode);
+            }
+        }
         public virtual void Add(GraphCam3D c)
         {
             Cams.Add(c);
@@ -163,10 +179,59 @@ namespace StarEngine.Scene
             }
 
         }
+        public virtual void RenderNodeNoLights(GraphNode3D node)
+        {
+
+            if (CamOverride != null)
+            {
+                foreach (var l in Lights)
+                {
+                    GraphLight3D.Active = l;
+
+                    node.Present(CamOverride);
+
+                }
+            }
+            else
+            {
+
+
+                foreach (var c in Cams)
+                {
+
+
+
+                    GL.Disable(EnableCap.Blend);
+
+
+                    // Console.WriteLine("Presenting:" + node.Name);
+                    node.Present(c);
+
+                    //                        foreach (var n in Nodes)
+                    //                      {
+                    //                        n.Present(c);
+                    //                  }
+
+
+                }
+            }
+            foreach (var snode in node.Sub)
+            {
+                //   Console.WriteLine("Rendering Node:" + snode.Name);
+                RenderNodeNoLights(snode);
+            }
+
+        }
+        public virtual void RenderNoLights()
+        {
+            Lighting.GraphLight3D.Active = null;
+            RenderNodeNoLights(Root);
+        }
         public virtual void Render()
         {
 
             RenderNode(Root);
+           
 
         }
     }

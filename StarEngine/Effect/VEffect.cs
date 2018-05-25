@@ -85,6 +85,7 @@ namespace StarEngine.Effect
                 GL.CompileShader(_Vert);
 
             }
+            Console.WriteLine(_VShader);
             Console.WriteLine(GL.GetShaderInfoLog(_Vert));
 
             if(_FShader!="")
@@ -93,6 +94,7 @@ namespace StarEngine.Effect
                 GL.ShaderSource(_Frag, File.ReadAllText(@_FShader));
                 GL.CompileShader(_Frag);
             }
+            Console.WriteLine(_FShader);
             Console.WriteLine(GL.GetShaderInfoLog(_Frag));
             _Program = GL.CreateProgram();
 

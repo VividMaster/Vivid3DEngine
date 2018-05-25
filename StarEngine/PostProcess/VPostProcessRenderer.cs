@@ -14,6 +14,7 @@ namespace StarEngine.PostProcess
 {
     public class PostProcessRender
     {
+        public static PostProcessRender Active = null;
         public SceneGraph3D Scene = null;
         public List<VPostProcess> Processes = new List<VPostProcess>();
         public VFrameBuffer FB = null;
@@ -41,7 +42,8 @@ namespace StarEngine.PostProcess
         }
         public void Render()
         {
-           // GL.Disable(EnableCap.Blend);
+            // GL.Disable(EnableCap.Blend);
+            Active = this;
              FB.Bind();
               Scene.Render();
                FB.Release();
@@ -49,11 +51,13 @@ namespace StarEngine.PostProcess
             //GL.DrawBuffer(DrawBufferMode.Back);
             foreach(var p in Processes)
             {
-                FB2.Bind();
+                //FB2.Bind();
                 p.Bind(FB.BB);
+                FB2.Bind();
                 p.Render(FB.BB);
-                p.Release(FB.BB);
                 FB2.Release();
+                p.Release(FB.BB);
+                //FB2.Release(); 
                 var ob = FB;
                 FB = FB2;
                 FB2 = ob;

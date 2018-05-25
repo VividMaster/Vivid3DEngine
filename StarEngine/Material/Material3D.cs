@@ -15,8 +15,8 @@ namespace StarEngine.Material
         public VTex2D TAO;
         public VTexCube TEnv;
         public float envS = 0.1f;
-        public OpenTK.Vector3 Spec = new OpenTK.Vector3(0.6f, 0.4f, 0.2f);
-        public float Shine = 30.0f;
+        public OpenTK.Vector3 Spec = new OpenTK.Vector3(0.9f, 0.9f, 1.4f);
+        public float Shine = 0.8f;
         public static Material3D Active = null;
         public void LoadTexs(string folder,string name)
         {

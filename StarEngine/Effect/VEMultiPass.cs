@@ -24,6 +24,7 @@ namespace StarEngine.Effect
             SetVec3("lightPos", Lighting.GraphLight3D.Active.WorldPos);
             SetVec3("lightCol", Lighting.GraphLight3D.Active.Diff);
             SetVec3("lightSpec", Lighting.GraphLight3D.Active.Spec);
+            SetFloat("lightRange", Lighting.GraphLight3D.Active.Range);
             SetFloat("atten", Lighting.GraphLight3D.Active.Atten);
             SetFloat("ambCE", Lighting.GraphLight3D.Active.AmbCE);
             SetFloat("matS", Material.Material3D.Active.Shine);

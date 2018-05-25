@@ -72,6 +72,11 @@ namespace StarEngine.Resonance.Forms
                     Col = NormCol;
                 }
                 Pressed = false;
+                Console.WriteLine("CLicked!");
+                if (Click != null)
+                {
+                    Console.WriteLine("Has click");
+                }
                 Click?.Invoke(b);
             }
 

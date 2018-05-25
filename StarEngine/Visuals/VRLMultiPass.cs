@@ -18,14 +18,34 @@ namespace StarEngine.Visuals
         {
 
             m.Mat.Bind();
-            Lighting.GraphLight3D.Active.ShadowFB.Cube.Bind(2);
-            fx.Bind();
+            if (Lighting.GraphLight3D.Active != null)
+            {
+                Lighting.GraphLight3D.Active.ShadowFB.Cube.Bind(2);
+            }
+            if (FXG.FXOverride != null)
+            {
+                FXG.FXOverride.Bind();
+            }
+            else
+            {
+                fx.Bind();
+            }
             v.SetMesh(m);
             v.Bind();
             v.Visualize();
             v.Release();
-            fx.Release();
-            Lighting.GraphLight3D.Active.ShadowFB.Cube.Release(2);
+            if (FXG.FXOverride != null)
+            {
+                FXG.FXOverride.Release();
+            }
+            else
+            {
+                fx.Release();
+            }
+            if (Lighting.GraphLight3D.Active != null)
+            {
+                Lighting.GraphLight3D.Active.ShadowFB.Cube.Release(2);
+            }
             m.Mat.Release();
         }
     }

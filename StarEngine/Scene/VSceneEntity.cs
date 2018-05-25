@@ -212,7 +212,8 @@ namespace StarEngine.Scene
             //mm = mm*Matrix4.CreateTranslation(wp);
             //GL.LoadMatrix(ref mm);
             Effect.FXG.Local = mm;
-        }
+            Effect.FXG.PrevLocal = PrevWorld;
+        }   
 
         /// <summary>
         /// To be called AFTER data asscoiation.

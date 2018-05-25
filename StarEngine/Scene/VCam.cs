@@ -65,7 +65,15 @@ namespace StarEngine.Scene
             get
             {
 
-                var m = Matrix4.Invert(LocalTurn*Matrix4.CreateTranslation(LocalPos));
+                var m = Matrix4.Invert(World);
+                return m;
+            }
+        }
+        public Matrix4 PrevCamWorld
+        {
+            get
+            {
+                var m = Matrix4.Invert(PrevWorld);
                 return m;
             }
         }

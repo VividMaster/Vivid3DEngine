@@ -120,6 +120,7 @@
     <Compile Include="Physics\PhysicsManager.cs" />
     <Compile Include="Physics\PyObject.cs" />
     <Compile Include="Physics\PyType.cs" />
+    <Compile Include="PostProcess\Processes\PPMotionBlur.cs" />
     <Compile Include="PostProcess\Processes\VPPBlur.cs" />
     <Compile Include="PostProcess\VPostProcess.cs" />
     <Compile Include="PostProcess\VPostProcessRenderer.cs" />

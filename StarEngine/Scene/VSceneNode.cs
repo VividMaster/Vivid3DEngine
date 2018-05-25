@@ -58,7 +58,11 @@ namespace StarEngine.Scene
         public bool FaceCamera = false;
         public bool CastShadows = true;
         public bool CastDepth = true;
-
+        public Matrix4 PrevWorld;
+        public void StartFrame()
+        {
+            PrevWorld = World;
+        }
 
         public GraphNode3D()
         {

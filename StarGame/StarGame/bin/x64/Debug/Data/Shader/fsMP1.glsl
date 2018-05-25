@@ -6,6 +6,9 @@ uniform vec3 viewPos;
 uniform vec3 lightCol;
 uniform vec3 lightSpec;
 uniform float lightDepth; 
+uniform float lightRange;
+uniform vec3 matSpec;
+uniform float matS;
 // Interpolated values from the vertex shaders
 
 in vec3 fragPos;
@@ -53,18 +56,23 @@ void main(){
 
     float spec = pow(max(dot(normal,halfwayDir),0.0),32.0);
 
-    vec3 specular = lightSpec * spec;
+    spec = spec * matS;
+
+    vec3 specular = ((lightSpec + matSpec) * spec); 
 
     //Shadows
 
 
     float shadow = 0.0;
     float bias = 5;
-    int samples = 8;
+    int samples = 12;
     float viewDistance = length(viewPos - fragPos);
-    float diskRadius = 0.001;
+    float diskRadius = 0.01;
     vec3 fragToLight = fragPos - lightPos;
     float currentDepth = length(fragToLight);
+    float ld2 = currentDepth/lightRange;
+    if(ld2>1.0) ld2 = 1.0;
+    ld2 = 1.0 - ld2;
     fragToLight = normalize(fragToLight);
     for(int i=0;i<samples;i++){
 
@@ -77,7 +85,7 @@ void main(){
     }
     shadow /= float(samples);
     shadow = 1.0 - shadow;
-    colorout = diffuse * vec3(shadow,shadow,shadow);
+    colorout = diffuse * ld2 * vec3(shadow,shadow,shadow) + (specular);
 
     /*
     vec3 ld = (fragPos-lightPos);
