@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using StarEngine.Logic;
+using StarEngine.Resonance;
+using StarEngine.Resonance.Forms;
 namespace StarEngine.State
 {
 
@@ -12,6 +14,7 @@ namespace StarEngine.State
 
         public Logic.Logics Logics = new Logics(1000 / 60, false);
         public Logic.Logics Graphics = new Logics(1000 / 60, false);
+        public Resonance.UI SUI = null;
 
         public string Name
         {
@@ -25,10 +28,16 @@ namespace StarEngine.State
             set;
         }
 
+        public void InitUI()
+        {
+            SUI = new Resonance.UI();
+        }
+
         public StarState(string name = "")
         {
             Name = name;
             Running = false;
+          //  SUI = new Resonance.UI();
         }
 
         public virtual void InitState()
@@ -46,6 +55,7 @@ namespace StarEngine.State
 
         }
 
+        
         public virtual void DrawState()
         {
 

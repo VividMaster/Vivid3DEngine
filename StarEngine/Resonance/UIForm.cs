@@ -87,6 +87,11 @@ namespace StarEngine.Resonance
             }
         }
 
+        public virtual void DesignUI()
+        {
+
+        }
+
         public bool InBounds(int x,int y)
         {
 
@@ -148,6 +153,11 @@ namespace StarEngine.Resonance
             Text = text;
             Changed?.Invoke();
             return this;
+        }
+
+        public UIForm()
+        {
+            DesignUI();
         }
 
         public UIForm SetImage(VTex2D tex)

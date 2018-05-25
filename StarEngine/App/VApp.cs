@@ -234,7 +234,7 @@ namespace StarEngine.App
             VPen.SetProj(0, 0, Width, Height);
             SetGL();
             InitApp();
-            PushState(InitState);
+           
         }
         public virtual void InitApp()
         {
@@ -250,7 +250,13 @@ namespace StarEngine.App
         }
         protected override void OnUpdateFrame(FrameEventArgs e)
         {
-            UpdateApp();
+            if (InitState != null)
+            {
+               
+                PushState(InitState);
+                InitState = null;
+            }
+                UpdateApp();
             if (States.Count > 0)
             {
                 var us = States.Peek();

@@ -15,6 +15,9 @@ namespace StarEngine.Resonance.Forms
         public VTex2D BodyImg = null;
         private ButtonForm resize;
 
+        public bool LockedPos = false;
+        public bool LockedSize = false;
+
         public WindowForm()
         {
 
@@ -30,7 +33,7 @@ namespace StarEngine.Resonance.Forms
 
             void ResizeDrag(int x,int y)
             {
-
+                if (LockedSize) return;
                 Set(X, Y, W + x, H + y, Text);
                 body.Set(0, 22, W, H - 24, "");
                 resize.X = W - 14;
@@ -42,7 +45,7 @@ namespace StarEngine.Resonance.Forms
 
             void DragFunc(int x,int y)
             {
-
+                if (LockedPos) return;
                 X = X + x;
                 Y = Y + y;
 

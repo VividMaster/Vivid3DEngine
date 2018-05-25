@@ -128,6 +128,7 @@
     <Compile Include="Reflect\ClassIO.cs" />
     <Compile Include="Reflect\ClassProperty.cs" />
     <Compile Include="Resonance\Forms\ButtonForm.cs" />
+    <Compile Include="Resonance\Forms\Graph3DForm.cs" />
     <Compile Include="Resonance\Forms\ImageForm.cs" />
     <Compile Include="Resonance\Forms\WindowForm.cs" />
     <Compile Include="Resonance\UI.cs" />
