@@ -293,8 +293,8 @@ namespace StarKnight.States
                 cam1.Turn(new OpenTK.Vector3(-yd, -xd, 0), Space.Local);
            
             //ppRen.Render();
-            scene3d.RenderShadows();
-            ppRen.Render();
+        //    scene3d.RenderShadows();
+      //      ppRen.Render();
 
             if (fx1 == null)
             {
@@ -309,7 +309,7 @@ namespace StarKnight.States
 
             //scene3d.Render();
 
-            scene3d.BeginFrame();
+           // scene3d.BeginFrame();
 
             //pe1.Render();
             //scene3d.Render();
@@ -320,7 +320,7 @@ namespace StarKnight.States
 
 
 
-          //  UI.Render();
+           UI.Render();
 
 
         }
