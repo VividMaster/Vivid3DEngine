@@ -44,6 +44,14 @@ namespace ModelEditor.Forms
             win.LockedPos = true;
             win.LockedSize = true;
 
+            PanelForm options = new PanelForm().Set(StarApp.W - 200, 20, 200, StarApp.H-20) as PanelForm;
+
+            ButtonForm importMesh = new ButtonForm().Set(10, 20, 150, 30, "Import Mesh") as ButtonForm;
+
+            options.Add(importMesh);
+
+            win.Add(options);
+
             Forms.Add(win);
 
         }

@@ -130,6 +130,7 @@
     <Compile Include="Resonance\Forms\ButtonForm.cs" />
     <Compile Include="Resonance\Forms\Graph3DForm.cs" />
     <Compile Include="Resonance\Forms\ImageForm.cs" />
+    <Compile Include="Resonance\Forms\PanelForm.cs" />
     <Compile Include="Resonance\Forms\WindowForm.cs" />
     <Compile Include="Resonance\UI.cs" />
     <Compile Include="Resonance\UIForm.cs" />
