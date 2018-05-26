@@ -32,7 +32,7 @@ namespace ModelEditor
 
             StarApp.InitState = startScreen;
 
-            var app = new ModelEditorApp(800, 600, false);
+            var app = new ModelEditorApp(800, 600, true);
 
             app.Run(60, 60);
 
