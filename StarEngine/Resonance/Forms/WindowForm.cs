@@ -13,23 +13,28 @@ namespace Vivid3D.Resonance.Forms
 
         public VTex2D TitleImg = null;
         public VTex2D BodyImg = null;
+        public VTex2D BodyNorm = null;
         private ButtonForm resize;
 
         public bool LockedPos = false;
         public bool LockedSize = false;
-
+        public VTex2D Shadow = null;
         public WindowForm()
         {
 
+            Shadow = new VTex2D("Data\\UI\\Shadow1.png", LoadMethod.Single, true);
             TitleImg = new VTex2D("Data\\UI\\Skin\\wintitle.png", LoadMethod.Single, true);
-            BodyImg = new VTex2D("Data\\UI\\Skin\\windowbg.png", LoadMethod.Single, true);
+            BodyImg = new VTex2D("Data\\UI\\Skin\\windowbg6.jpg", LoadMethod.Single, true);
+            BodyNorm = new VTex2D("Data\\UI\\normal\\winnorm5.jpg", LoadMethod.Single, false);
 
 
             var title = new ButtonForm().Set(0, 0, W, 20, "");
 
-            var body = new ImageForm().Set(0, 22, W, H - 24, "").SetImage(BodyImg);
+            var body = new ImageForm().Set(0, 22, W, H - 24, "").SetImage(BodyImg,BodyNorm).SetPeak(true,false);
+            body.Blur = 0.1f;
+            body.RefractV = 0.72f;
 
-             resize = (ButtonForm)new ButtonForm().Set(W - 14, H - 14, 14, 14, "X");
+            resize = (ButtonForm)new ButtonForm().Set(W - 14, H - 14, 14, 14, "X");
 
             void ResizeDrag(int x,int y)
             {
@@ -78,6 +83,7 @@ namespace Vivid3D.Resonance.Forms
             void DrawFunc()
             {
 
+               DrawFormBlur(Shadow,0.1f,new Vector4(0.9f,0.9f,0.9f,0.68f), 30, 30, W+50, H+50);
                 //DrawForm(TitleImg, 0, 0, W, 20);
 
             }

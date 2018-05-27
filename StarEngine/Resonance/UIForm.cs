@@ -29,7 +29,8 @@ namespace Vivid3D.Resonance
         public Logics Graphics = new Logics();
 
         public Vector4 Col = new Vector4(1, 1, 1, 0.7f);
-
+        public float Blur = 0.4f;
+        public float RefractV = 0.4f;
         public ChangedInfo Changed = null;
         public Draw Draw=null;
         public Update Update=null;
@@ -44,13 +45,24 @@ namespace Vivid3D.Resonance
         public Drag Drag = null;
 
         public VTex2D CoreTex = null;
-
+        public VTex2D NormTex = null;
         public int X = 0, Y = 0;
         public int W = 0, H = 0;
         public string Text = "";
 
         public UIForm Root = null;
         public List<UIForm> Forms = new List<UIForm>();
+
+        public bool Peak = false;
+        public bool Refract = false;
+        
+
+        public UIForm SetPeak(bool peak,bool refract)
+        {
+            Peak = peak;
+            Refract = refract;
+            return this;
+        }
 
         public UIForm Add(UIForm form)
         {
@@ -119,6 +131,63 @@ namespace Vivid3D.Resonance
             VPen.Rect(GX + x, GY + y, dw, dh,tex, Col);
 
         }
+        public void DrawFormBlur(VTex2D tex,int x=0,int y=0,int w=-1,int h = -1)
+        {
+            DrawFormBlur(tex,Blur, Col, x, y, w, h);
+        }
+        public void DrawFormBlurRefract(VTex2D tex,VTex2D norm,float blur,Vector4 col,float refract,int x=0,int y=0,int w=-1,int h = -1)
+        {
+            VPen.BlendMod = VBlend.Alpha;
+
+            int dw = W;
+            int dh = H;
+
+            if (w != -1)
+            {
+                dw = w;
+                dh = h;
+            }
+
+            var btex = new VTex2D(dw, dh);
+
+            btex.CopyTex(GX + x, App.VividApp.H - ((GY + y) + dh));
+
+            VPen.RectBlurRefract(GX + x, GY + y, dw, dh, tex, btex,norm, col, col, blur,refract);
+
+            btex.Delete();
+        }
+        public void DrawFormSolid(Vector4 col,int x=0,int y=0,int w=-1,int h = -1)
+        {
+            if (w == -1)
+            {
+                w = W;
+                h = H;
+            }
+            VPen.Rect(GX + x, GY + y, w, h, col);
+        }
+        public void DrawFormBlur(VTex2D tex,float blur,Vector4 col,int x =0,int y =0,int w=-1,int h = -1)
+        {
+            VPen.BlendMod = VBlend.Alpha;
+
+            int dw = W;
+            int dh = H;
+
+            if (w != -1)
+            {
+                dw = w;
+                dh = h;
+            }
+
+            var btex = new VTex2D(dw, dh);
+
+            btex.CopyTex(GX + x,App.VividApp.H-((GY+y)+dh));
+
+            VPen.RectBlur(GX + x, GY + y, dw, dh,tex, btex, col,col,blur);
+
+            btex.Delete();
+
+            
+        }
         public void DrawForm(VTex2D tex,Vector4 col, int x = 0, int y = 0, int w = -1,int h=-1)
         {
 
@@ -160,9 +229,10 @@ namespace Vivid3D.Resonance
             DesignUI();
         }
 
-        public UIForm SetImage(VTex2D tex)
+        public UIForm SetImage(VTex2D tex,VTex2D norm=null)
         {
             CoreTex = tex;
+            NormTex = norm;
             return this;
         }
     }

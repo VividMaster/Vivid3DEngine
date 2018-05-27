@@ -9,7 +9,7 @@ using Vivid3D.Resonance.Forms;
 namespace Vivid3D.State
 {
 
-    public class StarState
+    public class VividState
     {
 
         public Logic.Logics Logics = new Logics(1000 / 60, false);
@@ -33,7 +33,7 @@ namespace Vivid3D.State
             SUI = new Resonance.UI();
         }
 
-        public StarState(string name = "")
+        public VividState(string name = "")
         {
             Name = name;
             Running = false;

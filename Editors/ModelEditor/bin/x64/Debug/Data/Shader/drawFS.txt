@@ -10,5 +10,6 @@ uniform sampler2D tR;
 
 void main(){
     vec4 co = texture(tR,UV) * col;
+
     color = co;
 }

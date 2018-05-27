@@ -11,8 +11,46 @@ using Vivid3D.Texture;
 using Vivid3D.App;
 namespace Vivid3D.Draw
 {
+   public class VEQuadBlur2 : Effect3D
+    {
+        public Vector4 Col = Vector4.One;
+        public float Blur = 0.2f;
+        public VEQuadBlur2() : base("", "Data\\Shader\\blur2VS.glsl", "Data\\Shader\\blur2FS.glsl")
+        {
+
+        }
+        public override void SetPars()
+        {
+            SetTex("tR", 0);
+            SetVec4("col", Col);
+            SetFloat("blur", Blur);
+            SetMat("proj", Matrix4.CreateOrthographicOffCenter(0, AppInfo.RW, AppInfo.RH, 0, -1, 1));
+        }
+    }
+    public class VEQuadBlur : Effect3D
+    {
+        public Vector4 Col = Vector4.One;
+        public float Blur = 0.2f;
+        public float Refract = 0.25f;
+        public VEQuadBlur() : base("","Data\\Shader\\blurVS.glsl","Data\\Shader\\blurFS.glsl")
+        {
+
+        }
+        public override void SetPars()
+        {
+            SetTex("tR", 0);
+            SetTex("tB", 1);
+            SetTex("tN", 2);
+            SetFloat("blur", Blur);
+            SetFloat("refract", Refract);
+            SetBool("refractOn", Refract > 0);
+            SetVec4("col", Col);
+            SetMat("proj", Matrix4.CreateOrthographicOffCenter(0, AppInfo.RW, AppInfo.RH, 0, -1, 1));
+        }
+    }
     public class VEQuad : Effect3D
     {
+        public Vector4 Col = Vector4.One;
         public VEQuad() : base("", "Data\\Shader\\drawVS.txt", "Data\\Shader\\drawFS.txt")
         {
 
@@ -20,7 +58,7 @@ namespace Vivid3D.Draw
         public override void SetPars()
         {
             SetTex("tR", 0);
-
+            SetVec4("col", Col);
             SetMat("proj",Matrix4.CreateOrthographicOffCenter(0, AppInfo.RW, AppInfo.RH, 0, -1,1));
        
            // Console.WriteLine("W:" + AppInfo.RW + " H:" + AppInfo.RH);
@@ -38,13 +76,107 @@ namespace Vivid3D.Draw
         public static Matrix4 DrawMat = Matrix4.Identity;
         public static Matrix4 PrevMat = Matrix4.Identity;
         public static VEQuad QFX = null;
+        public static VEQuadBlur BFX = null;
+        public static VEQuadBlur2 BFX2 = null;
         public static int qva = -1, qvb = -1;
         public static VTex2D WhiteTex = null;
         public static void InitDraw()
         {
             QFX = new VEQuad();
-           
-            WhiteTex = new VTex2D("white.png", LoadMethod.Single);
+            BFX = new VEQuadBlur();
+            BFX2 = new VEQuadBlur2();
+            WhiteTex = new VTex2D("Data\\ui\\skin\\white.png", LoadMethod.Single);
+        }
+        public static void DraqQuadBlur2()
+        {
+            GL.Disable(EnableCap.CullFace);
+            GL.Disable(EnableCap.DepthTest);
+
+            GL.Viewport(0, 0, AppInfo.W, AppInfo.H);
+            //  GL.Disable(EnableCap.Blend);
+            //GL.Disable(EnableCap.)
+
+            //    WhiteTex.Bind(0);
+
+            //BFX.Refract = refract;
+   //         Console.WriteLine("R2:" + refract);
+ //           BFX.Blur = blur;
+
+            BFX2.Bind();
+
+
+            GL.BindVertexArray(qva);
+
+            GL.BindBuffer(BufferTarget.ArrayBuffer, qvb);
+            GL.EnableVertexAttribArray(0);
+
+            GL.VertexAttribPointer(0, 3, VertexAttribPointerType.Float, false, 9 * 4, 0);
+            GL.EnableVertexAttribArray(1);
+            GL.VertexAttribPointer(1, 2, VertexAttribPointerType.Float, false, 9 * 4, 3 * 4);
+            GL.EnableVertexAttribArray(2);
+            GL.VertexAttribPointer(2, 4, VertexAttribPointerType.Float, false, 9 * 4, 5 * 4);
+
+            uint[] ind = new uint[4];
+            ind[0] = 0;
+            ind[1] = 1;
+            ind[2] = 2;
+            ind[3] = 3;
+            GL.DrawElements<uint>(PrimitiveType.Quads, 4, DrawElementsType.UnsignedInt, ind);
+            //GL.DrawArrays(PrimitiveType.Quads, 0, 4);
+
+            GL.DisableVertexAttribArray(0);
+            GL.DisableVertexAttribArray(1);
+            // GL.BindBuffer(BufferTarget.ArrayBuffer, 0);
+            BFX2.Release();
+
+            GL.Enable(EnableCap.CullFace);
+            GL.Enable(EnableCap.DepthTest);
+        }
+        public static void DrawQuadBlur(float blur,float refract = 0)
+        {
+            GL.Disable(EnableCap.CullFace);
+            GL.Disable(EnableCap.DepthTest);
+
+            GL.Viewport(0, 0, AppInfo.W, AppInfo.H);
+            //  GL.Disable(EnableCap.Blend);
+            //GL.Disable(EnableCap.)
+
+            //    WhiteTex.Bind(0);
+
+            BFX.Refract = refract;
+            Console.WriteLine("R2:" + refract);
+            BFX.Blur = blur;
+
+            BFX.Bind();
+
+
+            GL.BindVertexArray(qva);
+
+            GL.BindBuffer(BufferTarget.ArrayBuffer, qvb);
+            GL.EnableVertexAttribArray(0);
+
+            GL.VertexAttribPointer(0, 3, VertexAttribPointerType.Float, false, 9 * 4, 0);
+            GL.EnableVertexAttribArray(1);
+            GL.VertexAttribPointer(1, 2, VertexAttribPointerType.Float, false, 9 * 4, 3 * 4);
+            GL.EnableVertexAttribArray(2);
+            GL.VertexAttribPointer(2, 4, VertexAttribPointerType.Float, false, 9 * 4, 5 * 4);
+
+            uint[] ind = new uint[4];
+            ind[0] = 0;
+            ind[1] = 1;
+            ind[2] = 2;
+            ind[3] = 3;
+            GL.DrawElements<uint>(PrimitiveType.Quads, 4, DrawElementsType.UnsignedInt, ind);
+            //GL.DrawArrays(PrimitiveType.Quads, 0, 4);
+
+            GL.DisableVertexAttribArray(0);
+            GL.DisableVertexAttribArray(1);
+            // GL.BindBuffer(BufferTarget.ArrayBuffer, 0);
+            BFX.Release();
+
+            GL.Enable(EnableCap.CullFace);
+            GL.Enable(EnableCap.DepthTest);
+
         }
         public static void DrawQuad()
         {
@@ -293,8 +425,60 @@ namespace Vivid3D.Draw
             //GL.End();
          
         }
+        public static void RectBlurRefract(int x,int y,int w,int h,VTex2D img,VTex2D bimg,VTex2D nimg,Vector4 tc,Vector4 bc,float blur,float refract)
+        {
+            BFX.Col = tc;
+           
+            Bind();
+            GenQuad(x, y, w, h, tc, bc);
+            img.Bind(0);
+            bimg.Bind(1);
+            nimg.Bind(2);
+            DrawQuadBlur(blur,refract);
+            nimg.Release(2);
+            bimg.Release(1);
+            img.Release(0);
+            // GL.Begin(BeginMode.Quads);
+            // GL.Vertex2(x, y);
+            //GL.Vertex2(x + width, y);
+            //GL.Vertex2(x + width, y + height);
+            //GL.Vertex2(x, y + height);
+            //GL.End();
+            Release();
+        }
+        public static void RectBlur2(int x,int y,int w,int h,VTex2D img,Vector4 col,float blur)
+        {
+            BFX2.Col = col;
+            BFX2.Blur = blur;
+            Bind();
+            GenQuad(x, y, w, h, col, col);
+            img.Bind(0);
+            DraqQuadBlur2();
+            img.Release(0);
+            Release();
+        }
+        public static void RectBlur(int x,int y,int w,int h,VTex2D img,VTex2D bimg,Vector4 tc,Vector4 bc,float blur)
+        {
+            BFX.Col = tc;
+            BFX.Refract = 0;
+            Bind();
+            GenQuad(x, y, w, h, tc, bc);
+            img.Bind(0);
+            bimg.Bind(1);
+            DrawQuadBlur(blur);
+            bimg.Release(1);
+            img.Release(0);
+            // GL.Begin(BeginMode.Quads);
+            // GL.Vertex2(x, y);
+            //GL.Vertex2(x + width, y);
+            //GL.Vertex2(x + width, y + height);
+            //GL.Vertex2(x, y + height);
+            //GL.End();
+            Release();
+        }
         public static void Rect(int x,int y,int w,int h,VTex2D img,Vector4 tc,Vector4 bc)
         {
+            QFX.Col = tc;
              Bind();
             GenQuad(x, y, w, h, tc, bc);
             img.Bind(0);
@@ -310,6 +494,7 @@ namespace Vivid3D.Draw
         }
         public static void Rect(int x,int y,int w,int h,Vector4 tc,Vector4 bc)
         {
+            QFX.Col = tc;
             Bind();
             GenQuad(x, y, w, h, tc, bc);
             WhiteTex.Bind(0);

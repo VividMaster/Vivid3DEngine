@@ -23,7 +23,7 @@ using Vivid3D.Import;
 using Vivid3D.Material;
 namespace StarKnight
 {
-    public class StarGame : StarApp
+    public class StarGame : VividApp
     {
         public StarGame(int w, int h, bool full) : base("Rebound - Alpha", w, h, full)
         {

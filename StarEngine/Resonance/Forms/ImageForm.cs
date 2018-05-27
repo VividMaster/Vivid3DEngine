@@ -14,10 +14,25 @@ namespace Vivid3D.Resonance.Forms
         public ImageForm()
         {
 
-            
+            Col = new OpenTK.Vector4(1, 1, 1, 1);
             void DrawFunc()
             {
-                DrawForm(CoreTex);
+                if (Peak)
+                {
+                    if (Refract)
+                    {
+                        Console.WriteLine("R:" + RefractV);
+                        DrawFormBlurRefract(CoreTex,NormTex, Blur, Col, RefractV);
+                    }
+                    else
+                    {
+                        DrawFormBlur(CoreTex, Blur, Col);
+                    }
+                }
+                else
+                {
+                    DrawForm(CoreTex);
+                }
             }
 
             Draw = DrawFunc;

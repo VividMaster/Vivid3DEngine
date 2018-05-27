@@ -25,7 +25,7 @@ using Vivid3D.State;
 using ModelEditor.Forms;
 namespace ModelEditor.States
 {
-    public class StartScreen : StarState 
+    public class StartScreen : VividState 
     {
 
         public override void InitState()
@@ -33,7 +33,7 @@ namespace ModelEditor.States
 
             InitUI();
 
-            SUI.Root = new StartScreenForm().Set(0, 0, StarApp.W, StarApp.H);
+            SUI.Root = new StartScreenForm().Set(0, 0, VividApp.W, VividApp.H);
             
 
         }

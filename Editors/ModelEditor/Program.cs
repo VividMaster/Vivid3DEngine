@@ -30,9 +30,9 @@ namespace ModelEditor
 
             var startScreen = new States.StartScreen();
 
-            StarApp.InitState = startScreen;
+            VividApp.InitState = startScreen;
 
-            var app = new ModelEditorApp(800, 600, true);
+            var app = new ModelEditorApp(1024, 768,false);
 
             app.Run(60, 60);
 

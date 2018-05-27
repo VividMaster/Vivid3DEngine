@@ -23,7 +23,7 @@ using Vivid3D.Import;
 using Vivid3D.Material;
 namespace ModelEditor
 {
-    public class ModelEditorApp : StarApp
+    public class ModelEditorApp : VividApp
     {
         public ModelEditorApp(int w,int h,bool full) : base("Vivid3D - Model Editor",w,h,full)
         {

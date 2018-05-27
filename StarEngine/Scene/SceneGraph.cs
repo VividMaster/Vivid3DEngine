@@ -308,8 +308,8 @@ namespace Vivid3D.Scene
         public Vector2 GetPoint(float x,float y)
         {
             int w, h;
-            w = App.StarApp.W;
-            h = App.StarApp.H;
+            w = App.VividApp.W;
+            h = App.VividApp.H;
             Vector2 r = new Vector2(x, y);
             r = Util.Maths.Push(r, -w / 2, -h / 2);
             r = Util.Maths.Rotate(r.X, r.Y, Rot, 1);

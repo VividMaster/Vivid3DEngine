@@ -30,8 +30,8 @@ namespace Vivid3D.FXS
         public override void SetPars()
         {
             float sw, sh;
-            sw = Vivid3D.App.StarApp.W;
-            sh = Vivid3D.App.StarApp.H;
+            sw = Vivid3D.App.VividApp.W;
+            sh = Vivid3D.App.VividApp.H;
             float px, py, pz;
 
             // px = Light.X + Graph.X;
@@ -59,8 +59,8 @@ namespace Vivid3D.FXS
             SetVec3("lSpec", Light.Specular);
             SetFloat("lShiny", Light.Shiny);
             SetFloat("lRange", Light.Range * Graph.Z);
-            SetFloat("sWidth", Vivid3D.App.StarApp.W);
-            SetFloat("sHeight", Vivid3D.App.StarApp.H);
+            SetFloat("sWidth", Vivid3D.App.VividApp.W);
+            SetFloat("sHeight", Vivid3D.App.VividApp.H);
 
         }
     }

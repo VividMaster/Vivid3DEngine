@@ -18,6 +18,8 @@ namespace Vivid3D.Resonance
 
         public static Font.VFont Font = null;
 
+        public UIForm Top = null;
+
         public UIForm Root;
 
         public UI()
@@ -28,9 +30,10 @@ namespace Vivid3D.Resonance
                 Pressed[i] = null;
             }
         }
-
+        private Texture.VTex2D Black = null;
         public void InitUI()
         {
+            Black = new Texture.VTex2D("data\\ui\\black.png", Texture.LoadMethod.Single, false);
             Font = new VFont("data/font/times.ttf.vf");
         }
 
@@ -54,8 +57,14 @@ namespace Vivid3D.Resonance
             MX = VInput.MX;
             MY = VInput.MY;
 
-            UpdateUpdateList();
-
+            if (Top != null)
+            {
+                UpdateUpdateList(Top);
+            }
+            else
+            {
+                UpdateUpdateList(Root);
+            }
             int f = 0;
             var top = GetTopForm(MX, MY);
 
@@ -195,43 +204,90 @@ namespace Vivid3D.Resonance
             }
             return null;
         }
-
+        private float TopB = 0.0f;
         public void Render()
         {
+            if (Top != null)
+            {
+                TopB = TopB + 0.065f;
+                if (TopB > 0.8f)
+                {
+                    TopB = 0.8f;
+                }
+            }
+            else
+            {
+                TopB = TopB - 0.085f;
+                if (TopB < 0) TopB = 0;
+            }
             Graphics.SmartUpdate();
 
-            UpdateRenderList();
-
-            foreach (var form in RenderList)
+            if (Top != null)
             {
-
-                if (form.Draw != null)
+                UpdateRenderList(Root);
+                foreach(var form in RenderList)
                 {
-                    form.Draw();
+                    form.Draw?.Invoke();
                 }
+                var ntex = new Texture.VTex2D(Vivid3D.App.VividApp.W, Vivid3D.App.VividApp.H);
 
+                ntex.CopyTex(0, 0);
+                OpenTK.Graphics.OpenGL4.GL.Clear(OpenTK.Graphics.OpenGL4.ClearBufferMask.ColorBufferBit);
+                Vivid3D.Draw.VPen.RectBlur2(0, 0, Vivid3D.App.VividApp.W, Vivid3D.App.VividApp.H, ntex, new OpenTK.Vector4(1, 1, 1, 1), TopB);
+
+
+                UpdateRenderList(Top);
+
+                foreach (var form in RenderList)
+                {
+                    form.Draw?.Invoke();
+                }
+              
+                ntex.Delete();
+            }
+            else
+            {
+                UpdateRenderList(Root);
+
+
+                foreach (var form in RenderList)
+                {
+
+                            
+                        form.Draw?.Invoke();
+                    
+
+                }
+                if (TopB > 0)
+                {
+                    Texture.VTex2D ntex = new Texture.VTex2D(Vivid3D.App.VividApp.W, Vivid3D.App.VividApp.H);
+                    ntex.CopyTex(0, 0);
+                    OpenTK.Graphics.OpenGL4.GL.Clear(OpenTK.Graphics.OpenGL4.ClearBufferMask.ColorBufferBit);
+                    Vivid3D.Draw.VPen.RectBlur2(0, 0, Vivid3D.App.VividApp.W, Vivid3D.App.VividApp.H, ntex, new OpenTK.Vector4(1, 1, 1, 1), TopB);
+                    ntex.Delete();
+                }
             }
         }
 
         public List<UIForm> UpdateList = new List<UIForm>();
         public List<UIForm> RenderList = new List<UIForm>();
 
-        private void UpdateUpdateList()
+        private void UpdateUpdateList(UIForm begin)
         {
             UpdateList.Clear();
 
-            AddNodeBackward(UpdateList, Root);
+            AddNodeBackward(UpdateList, begin);
 
 
 
         }
 
-        private void UpdateRenderList()
+        private void UpdateRenderList(UIForm begin)
         {
 
             RenderList.Clear();
 
-            AddNodeForward(RenderList, Root);
+            AddNodeForward(RenderList, begin);
             
 
         }
