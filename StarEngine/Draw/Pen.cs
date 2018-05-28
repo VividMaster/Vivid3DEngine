@@ -144,7 +144,7 @@ namespace Vivid3D.Draw
             //    WhiteTex.Bind(0);
 
             BFX.Refract = refract;
-            Console.WriteLine("R2:" + refract);
+          
             BFX.Blur = blur;
 
             BFX.Bind();

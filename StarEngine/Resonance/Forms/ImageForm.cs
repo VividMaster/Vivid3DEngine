@@ -21,7 +21,7 @@ namespace Vivid3D.Resonance.Forms
                 {
                     if (Refract)
                     {
-                        Console.WriteLine("R:" + RefractV);
+                     
                         DrawFormBlurRefract(CoreTex,NormTex, Blur, Col, RefractV);
                     }
                     else

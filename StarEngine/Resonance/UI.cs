@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 using Vivid3D.Font;
 using Vivid3D.Input;
 using Vivid3D.Logic;
-
+using OpenTK;
+using OpenTK.Graphics.OpenGL4;
 namespace Vivid3D.Resonance
 {
     public class UI
@@ -118,13 +119,30 @@ namespace Vivid3D.Resonance
                 {
                     if (Pressed[0] == null)
                     {
+                        Console.WriteLine("Click:" + clicks);
+                        if(Environment.TickCount<lastClick+800)
+                        {
+                            clicks++;
+                            if (clicks == 2)
+                            {
+
+                                TopForm.DoubleClick?.Invoke(0);
+                                Console.WriteLine("DoubleClicked:"+TopForm.Text+":"+TopForm.GetType().ToString());
+                            }
+                        }
+                        else
+                        {
+                            Console.WriteLine("Click One");
+                            clicks = 1;
+                        }
+                        lastClick = Environment.TickCount;
                         TopForm.MouseDown?.Invoke(0);
                         Pressed[0] = TopForm;
                         if (sdrag)
                         {
                             sdx = MX;
                             sdy = MY;
-                            Console.WriteLine("DRAGGING!");
+                    
                         
                         }
                     }
@@ -154,8 +172,9 @@ namespace Vivid3D.Resonance
                     int mvy = MY - sdy;
                     if (mvx != 0 || mvy != 0)
                     {
-                        Console.WriteLine("XD:" + mvx + " YD:" + mvy);
+                       
                         Pressed[0].Drag?.Invoke(mvx, mvy);
+                        Pressed[0].PostDrag?.Invoke(mvx,mvy);
                     }
                         sdx = MX;
 
@@ -187,6 +206,8 @@ namespace Vivid3D.Resonance
 
 
         }
+        public int clicks = 0;
+        public int lastClick = 0;
         private bool sdrag = true;
         private int sdx, sdy, ux, uy;
         public UIForm[] Pressed = new UIForm[32];
@@ -197,6 +218,7 @@ namespace Vivid3D.Resonance
 
                 if (form.InBounds(mx, my))
                 {
+                //    Console.WriteLine("Form:" + form.Text);
                     return form;
                     
                 }
@@ -240,6 +262,7 @@ namespace Vivid3D.Resonance
 
                 foreach (var form in RenderList)
                 {
+                   
                     form.Draw?.Invoke();
                 }
               

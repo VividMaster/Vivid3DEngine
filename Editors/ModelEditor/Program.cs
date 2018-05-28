@@ -32,7 +32,7 @@ namespace ModelEditor
 
             VividApp.InitState = startScreen;
 
-            var app = new ModelEditorApp(1024, 768,false);
+            var app = new ModelEditorApp(800,600,false);
 
             app.Run(60, 60);
 

@@ -20,11 +20,14 @@ namespace Vivid3D.Resonance
     public delegate void MousePressed(int but);
     public delegate void FormLogic();
     public delegate void Click(int b);
+   
     public delegate void Drag(int x, int y);
     public delegate void ChangedInfo();
+   
     public class UIForm
     {
 
+        public bool PushArea = false;
         public Logics Logics = new Logics();
         public Logics Graphics = new Logics();
 
@@ -43,7 +46,8 @@ namespace Vivid3D.Resonance
         public FormLogic FormLogic = null;
         public Click Click = null;
         public Drag Drag = null;
-
+        public Click DoubleClick = null;
+        public Drag PostDrag = null;
         public VTex2D CoreTex = null;
         public VTex2D NormTex = null;
         public int X = 0, Y = 0;
