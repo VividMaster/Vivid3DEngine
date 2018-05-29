@@ -124,7 +124,7 @@ namespace Vivid3D.Resonance
                     if (Pressed[0] == null)
                     {
                         Console.WriteLine("Click:" + clicks);
-                        if(Environment.TickCount<lastClick+800)
+                        if(Environment.TickCount<lastClick+300)
                         {
                             clicks++;
                             if (clicks == 2)
@@ -229,7 +229,7 @@ namespace Vivid3D.Resonance
         {
             foreach (var form in UpdateList)
             {
-
+                if (form.CheckBounds == false) continue;
                 if (form.InBounds(mx, my))
                 {
                 //    Console.WriteLine("Form:" + form.Text);

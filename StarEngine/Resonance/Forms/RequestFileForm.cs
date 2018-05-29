@@ -88,7 +88,12 @@ namespace Vivid3D.Resonance.Forms
             }
             foreach(var file in di.GetFiles())
             {
-                Files.AddItem(file.Name, FilePic);
+                var newi = Files.AddItem(file.Name, FilePic);
+                void ClickFunc(int b)
+                {
+                    FileBox.Text = file.Name;
+                }
+                newi.Click = ClickFunc;
             }
             Files.Changed?.Invoke();
         }

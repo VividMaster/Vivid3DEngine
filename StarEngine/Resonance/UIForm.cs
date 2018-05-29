@@ -29,6 +29,7 @@ namespace Vivid3D.Resonance
     public class UIForm
     {
 
+        public bool CheckBounds = true;
         public bool PushArea = false;
         public Logics Logics = new Logics();
         public Logics Graphics = new Logics();

@@ -83,9 +83,11 @@ namespace Vivid3D.Resonance.Forms
                     if (ly > H-18 || ly<0)
                     {
                         newi.Render = false;
+                        CheckBounds = false;
                     }
                     else
                     {
+                        CheckBounds = true;
                         newi.Render = true;
                     }
                     newi.Y = (int)ly;
