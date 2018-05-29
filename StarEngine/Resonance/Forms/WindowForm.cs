@@ -71,7 +71,7 @@ namespace Vivid3D.Resonance.Forms
                 body.H = H - 26;
                 body.W = W;
                 resize.X = W - 14;
-                resize.Y = H - 14;
+                resize.Y = H - 20;
 
 
             }
@@ -83,7 +83,7 @@ namespace Vivid3D.Resonance.Forms
             void DrawFunc()
             {
 
-               DrawFormBlur(Shadow,0.1f,new Vector4(0.9f,0.9f,0.9f,0.68f), 30, 30, W+50, H+50);
+               DrawFormBlur(Shadow,0.1f,new Vector4(0.9f,0.9f,0.9f,0.98f), 30, 30, W+50, H+50);
                 //DrawForm(TitleImg, 0, 0, W, 20);
 
             }

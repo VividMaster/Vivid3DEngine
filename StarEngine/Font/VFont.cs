@@ -11,13 +11,14 @@ namespace Vivid3D.Font
     {
         public string Path = "";
         public List<VGlyph> Glypth = new List<VGlyph>();
+
         public int Width(string t)
         {
             int sw = 0;
             foreach(char c in t)
             {
                 VGlyph v = Glypth[(int)c];
-                sw += v.W;
+                sw += (int)((float)v.W / 1.3f);
             }
             return sw;
         }

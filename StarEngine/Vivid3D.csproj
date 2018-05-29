@@ -135,6 +135,7 @@
     <Compile Include="Resonance\Forms\PanelForm.cs" />
     <Compile Include="Resonance\Forms\RequestFileForm.cs" />
     <Compile Include="Resonance\Forms\ScrollBarV.cs" />
+    <Compile Include="Resonance\Forms\TextBoxForm.cs" />
     <Compile Include="Resonance\Forms\WindowForm.cs" />
     <Compile Include="Resonance\UI.cs" />
     <Compile Include="Resonance\UIForm.cs" />

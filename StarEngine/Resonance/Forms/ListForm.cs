@@ -39,15 +39,34 @@ namespace Vivid3D.Resonance.Forms
                     Forms.Remove(item);
                 }
 
-                Scroller.Max = Scroller.H - Scroller.ScrollBut.H;
-                float ly = Scroller.Cur / Scroller.Max;
-                float mh2 = ly * ((Items.Count+1) * 21);
-
-
-                float sh = Scroller.H;
+                float sh = (Scroller.H - Scroller.ScrollBut.H);
                 float mh = Items.Count * 20;
+
                 float dh = sh / mh;
-                Scroller.ScrollBut.H =(int)(dh * Scroller.H);
+                float sm1 = 0;
+                if (dh < 0.03f)
+                {
+                    //Scroller.Max = Scr
+                //    sm1 = (float)Scroller.H * 0.03f; 
+               
+                }
+
+                Scroller.ScrollBut.H = (int)(dh * Scroller.H);
+                if (dh < 0.1f)
+                {
+
+                    //Scroller.ScrollBut.H = 6;
+                    //Scroller.Max 
+                    //Scroller.Max = Scroller.Max - 10;
+
+                }
+
+                Scroller.Max = Scroller.H;
+                float ly = Scroller.Cur / Scroller.Max;
+                float mh2 = ly * ((Items.Count+1) * 22);
+
+
+               
                 if (Scroller.ScrollBut.H > H)
                 {
                     Scroller.ScrollBut.H = H;
@@ -75,8 +94,8 @@ namespace Vivid3D.Resonance.Forms
                     Add(newi);
                     
                 }
-           
-              
+
+                if (Scroller.ScrollBut.H < 5) Scroller.ScrollBut.H = 5;
 
                 
 

@@ -20,6 +20,8 @@ namespace Vivid3D.Resonance
     public delegate void MousePressed(int but);
     public delegate void FormLogic();
     public delegate void Click(int b);
+    public delegate void Activate();
+    public delegate void Deactivate();
    
     public delegate void Drag(int x, int y);
     public delegate void ChangedInfo();
@@ -48,6 +50,8 @@ namespace Vivid3D.Resonance
         public Drag Drag = null;
         public Click DoubleClick = null;
         public Drag PostDrag = null;
+        public Activate Activate = null;
+        public Deactivate Deactivate = null;
         public VTex2D CoreTex = null;
         public VTex2D NormTex = null;
         public int X = 0, Y = 0;
@@ -209,11 +213,15 @@ namespace Vivid3D.Resonance
             VPen.Rect(GX+x, GY+y, dw, dh, tex, col);
 
         }
-
+        
         public void DrawText(string txt,int x,int y)
         {
+            DrawText(txt, x, y, Vector4.One);
+        }
+        public void DrawText(string txt, int x, int y,Vector4 col)
+            {
 
-            VFontRenderer.Draw(UI.Font, txt, GX+x, GY+y);
+            VFontRenderer.Draw(UI.Font, txt, GX+x, GY+y,col);
 
         }
 

@@ -18,7 +18,7 @@ namespace Vivid3D.Resonance
         public Logics Graphics = new Logics();
 
         public static Font.VFont Font = null;
-
+        public static UIForm Active = null;
         public UIForm Top = null;
 
         public UIForm Root;
@@ -65,6 +65,10 @@ namespace Vivid3D.Resonance
             else
             {
                 UpdateUpdateList(Root);
+            }
+            foreach(var form in UpdateList)
+            {
+                form.Update?.Invoke();
             }
             int f = 0;
             var top = GetTopForm(MX, MY);
@@ -138,6 +142,16 @@ namespace Vivid3D.Resonance
                         lastClick = Environment.TickCount;
                         TopForm.MouseDown?.Invoke(0);
                         Pressed[0] = TopForm;
+                        if (Active != TopForm)
+                        {
+                            if (Active != null)
+                            {
+                                Active.Deactivate?.Invoke();
+                            }
+                        }
+                        Active = TopForm;
+                        TopForm.Activate?.Invoke();
+                        
                         if (sdrag)
                         {
                             sdx = MX;
