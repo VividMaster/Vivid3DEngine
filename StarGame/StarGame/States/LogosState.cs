@@ -26,7 +26,7 @@ using Vivid3D.Texture;
 using Vivid3D.Logic;
 namespace StarKnight.States
 {
-    public class LogosState : StarState
+    public class LogosState : VividState
     {
 
         public int LS = 0;
@@ -46,7 +46,7 @@ namespace StarKnight.States
 
             ms = StarSoundSys.Play2DFile("Data\\Music\\Logo\\LogoSting1.wav");
             
-            VPen.SetProj(0, 0, StarApp.W, StarApp.H);
+            VPen.SetProj(0, 0, VividApp.W, VividApp.H);
 
             bool AlphaUp()
             {
@@ -202,13 +202,13 @@ namespace StarKnight.States
 
             bool RenderDarkLogo()
             {
-                VPen.Rect(0, 0, StarApp.W, StarApp.H, LogoTex, new OpenTK.Vector4(LogoAlpha, LogoAlpha, LogoAlpha, LogoAlpha));
+                VPen.Rect(0, 0, VividApp.W, VividApp.H, LogoTex, new OpenTK.Vector4(LogoAlpha, LogoAlpha, LogoAlpha, LogoAlpha));
                 return PresentLogo;
             }
 
             bool RenderPresLogo()
             {
-                VPen.Rect(0, 0, StarApp.W, StarApp.H, this.PresTex, new OpenTK.Vector4(LogoAlpha, LogoAlpha, LogoAlpha, LogoAlpha));
+                VPen.Rect(0, 0, VividApp.W, VividApp.H, this.PresTex, new OpenTK.Vector4(LogoAlpha, LogoAlpha, LogoAlpha, LogoAlpha));
                 return GameLogo;
             }
 
@@ -216,7 +216,7 @@ namespace StarKnight.States
             {
                 //Console.WriteLine("Rendering!"); 
 
-                VPen.Rect(0, 0, StarApp.W, StarApp.H, GameTex, new OpenTK.Vector4(LogoAlpha, LogoAlpha, LogoAlpha, LogoAlpha));
+                VPen.Rect(0, 0, VividApp.W, VividApp.H, GameTex, new OpenTK.Vector4(LogoAlpha, LogoAlpha, LogoAlpha, LogoAlpha));
                 return ToMenu;
             }
 
@@ -227,7 +227,7 @@ namespace StarKnight.States
                 LogoAlpha = 0.0f;
                 ms.Stop();
 
-                StarApp.PushState(new States.MainMenuState());
+                VividApp.PushState(new States.MainMenuState());
 
 
             }
@@ -261,7 +261,7 @@ namespace StarKnight.States
 
             void DarkLogo()
             {
-                VPen.Rect(0, 0, StarApp.W, StarApp.H, LogoTex, new OpenTK.Vector4(LogoAlpha, LogoAlpha, LogoAlpha, LogoAlpha));
+                VPen.Rect(0, 0, VividApp.W, VividApp.H, LogoTex, new OpenTK.Vector4(LogoAlpha, LogoAlpha, LogoAlpha, LogoAlpha));
             }
 
             bool DarkLogoUntil()
@@ -276,7 +276,7 @@ namespace StarKnight.States
 
             void PresLogo()
             {
-                VPen.Rect(0, 0, StarApp.W, StarApp.H, LogoTex, new OpenTK.Vector4(LogoAlpha, LogoAlpha, LogoAlpha, LogoAlpha));
+                VPen.Rect(0, 0, VividApp.W, VividApp.H, LogoTex, new OpenTK.Vector4(LogoAlpha, LogoAlpha, LogoAlpha, LogoAlpha));
             }
 
 

@@ -33,7 +33,7 @@ using Vivid3D.Resonance.Forms;
 using Vivid3D.Physics;
 namespace StarKnight.States
 {
-    public class MainMenuState : StarState
+    public class MainMenuState : VividState
     {
 
 
@@ -62,7 +62,7 @@ namespace StarKnight.States
 
 
 
-            UI.Root = new ImageForm().Set(0, 0, Vivid3D.App.StarApp.W, Vivid3D.App.StarApp.H,"ImageForm").SetImage(MenuBG);
+            UI.Root = new ImageForm().Set(0, 0, Vivid3D.App.VividApp.W, Vivid3D.App.VividApp.H,"ImageForm").SetImage(MenuBG);
 
             WindowForm win1 = (WindowForm)(new WindowForm().Set(40, 100, 260, 400, "Star Knights"));
 
@@ -293,8 +293,8 @@ namespace StarKnight.States
                 cam1.Turn(new OpenTK.Vector3(-yd, -xd, 0), Space.Local);
            
             //ppRen.Render();
-        //    scene3d.RenderShadows();
-      //      ppRen.Render();
+            scene3d.RenderShadows();
+            ppRen.Render();
 
             if (fx1 == null)
             {
@@ -309,7 +309,7 @@ namespace StarKnight.States
 
             //scene3d.Render();
 
-           // scene3d.BeginFrame();
+            scene3d.BeginFrame();
 
             //pe1.Render();
             //scene3d.Render();

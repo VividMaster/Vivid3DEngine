@@ -24,7 +24,7 @@ namespace Vivid3D.Draw
         public static void To2D()
         {
 
-            var pm = Matrix4.CreateOrthographicOffCenter(0, Vivid3D.App.StarApp.RW,StarApp.RH,0, 0, 1);
+            var pm = Matrix4.CreateOrthographicOffCenter(0, Vivid3D.App.VividApp.RW,VividApp.RH,0, 0, 1);
 
             //pm = Matrix4.CreateOrthographic(StarKnightsAPP.RW, StarKnightsAPP.RH, 0, 1);
 

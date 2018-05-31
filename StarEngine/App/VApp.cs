@@ -20,7 +20,7 @@ namespace Vivid3D.App
         public static string App;
         public static int RW, RH;
     }
-    public class VForm : StarApp
+    public class VForm : VividApp
     {
         public void SetSize(int w,int h)
         {
@@ -62,24 +62,33 @@ namespace Vivid3D.App
         }
 
     }
-    public class StarApp : GameWindow
+    public class VividApp : GameWindow
     {
-        public static StarApp Link = null;
+        public static VividApp Link = null;
         private string _Title = "";
         private OpenTK.Graphics.Color4 _BgCol = OpenTK.Graphics.Color4.Black;
         public static int W, H;
         public static int RW, RH;
 
-        public static StarState InitState = null;
+        public static VividState InitState = null;
         
-        public static Stack<StarState> States = new Stack<StarState>();
+        public static Stack<VividState> States = new Stack<VividState>();
 
-        public StarApp()
+        public static VividState ActiveState
+        {
+            get
+            {
+                if (States.Count == 0) return null;
+                return States.Peek();
+            }
+        }
+
+        public VividApp()
         {
 
         }
 
-        public static void PushState(StarState state,bool start = true)
+        public static void PushState(VividState state,bool start = true)
         {
 
             States.Push(state);
@@ -122,7 +131,7 @@ namespace Vivid3D.App
         {
             this.WindowState = WindowState.Fullscreen;
         }
-        public StarApp(string app, int width, int height, bool full) : base(width, height, OpenTK.Graphics.GraphicsMode.Default, app, full ? GameWindowFlags.Fullscreen : GameWindowFlags.Default, DisplayDevice.Default, 4, 5, OpenTK.Graphics.GraphicsContextFlags.ForwardCompatible)
+        public VividApp(string app, int width, int height, bool full) : base(width, height, OpenTK.Graphics.GraphicsMode.Default, app, full ? GameWindowFlags.Fullscreen : GameWindowFlags.Default, DisplayDevice.Default, 4, 5, OpenTK.Graphics.GraphicsContextFlags.ForwardCompatible)
 
         {
             Link = this;

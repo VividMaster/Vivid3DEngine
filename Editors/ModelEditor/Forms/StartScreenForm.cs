@@ -39,20 +39,48 @@ namespace ModelEditor.Forms
         public override void DesignUI()
         {
 
-            WindowForm win = new WindowForm().Set(0, 0, StarApp.W, StarApp.H, "Vivid3D - Model Editor - Start Screen") as WindowForm;
+            VTex2D bgtex = new VTex2D("Data\\bg\\bg1.jpg", LoadMethod.Single, false);
+           // VTex2D bgtex2 = new VTex2D("Data\\bg\\bg2.jpg", LoadMethod.Single, false);
 
-            win.LockedPos = true;
+            ImageForm bg = new ImageForm().Set(0, 0, VividApp.W, VividApp.H).SetImage(bgtex) as ImageForm;
+
+            WindowForm win = new WindowForm().Set(0, 0, VividApp.W, VividApp.H, "Vivid3D - Model Editor - Start Screen") as WindowForm;
+
+            win.LockedPos = false;
             win.LockedSize = true;
 
-            PanelForm options = new PanelForm().Set(StarApp.W - 200, 20, 200, StarApp.H-20) as PanelForm;
+            PanelForm options = new PanelForm().Set(VividApp.W - 180, 20, 175, VividApp.H-20) as PanelForm;
 
-            ButtonForm importMesh = new ButtonForm().Set(10, 20, 150, 30, "Import Mesh") as ButtonForm;
+            ButtonForm importMesh = new ButtonForm().Set(10, 20, 150, 25, "Import Mesh") as ButtonForm;
 
             options.Add(importMesh);
 
             win.Add(options);
 
-            Forms.Add(win);
+            bg.Add(win);
+
+            //ImageForm b2 = new ImageForm().Set(100, 100, 200, 200).SetImage(bgtex2).SetPeak(true, false) as ImageForm;
+            //WindowForm b2 = new WindowForm().Set(300, 400, 200, 150/,"Test1") as WindowForm;
+
+
+            RequestFileForm impFile = null;
+
+            void ImportMeshFunc(int b)
+            {
+                switch (b)
+                {
+                    case 0:
+                        impFile = new RequestFileForm("Select a mesh to import");
+                        VividApp.ActiveState.SUI.Top = impFile;
+                        break;
+                }
+            }
+
+            importMesh.Click = ImportMeshFunc;
+
+            //bg.Add(b2);
+
+            Forms.Add(bg);
 
         }
 

@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 using Vivid3D.Font;
 using Vivid3D.Input;
 using Vivid3D.Logic;
-
+using OpenTK;
+using OpenTK.Graphics.OpenGL4;
 namespace Vivid3D.Resonance
 {
     public class UI
@@ -17,6 +18,8 @@ namespace Vivid3D.Resonance
         public Logics Graphics = new Logics();
 
         public static Font.VFont Font = null;
+        public static UIForm Active = null;
+        public UIForm Top = null;
 
         public UIForm Root;
 
@@ -28,9 +31,10 @@ namespace Vivid3D.Resonance
                 Pressed[i] = null;
             }
         }
-
+        private Texture.VTex2D Black = null;
         public void InitUI()
         {
+            Black = new Texture.VTex2D("data\\ui\\black.png", Texture.LoadMethod.Single, false);
             Font = new VFont("data/font/times.ttf.vf");
         }
 
@@ -54,8 +58,18 @@ namespace Vivid3D.Resonance
             MX = VInput.MX;
             MY = VInput.MY;
 
-            UpdateUpdateList();
-
+            if (Top != null)
+            {
+                UpdateUpdateList(Top);
+            }
+            else
+            {
+                UpdateUpdateList(Root);
+            }
+            foreach(var form in UpdateList)
+            {
+                form.Update?.Invoke();
+            }
             int f = 0;
             var top = GetTopForm(MX, MY);
 
@@ -109,13 +123,40 @@ namespace Vivid3D.Resonance
                 {
                     if (Pressed[0] == null)
                     {
+                        Console.WriteLine("Click:" + clicks);
+                        if(Environment.TickCount<lastClick+300)
+                        {
+                            clicks++;
+                            if (clicks == 2)
+                            {
+
+                                TopForm.DoubleClick?.Invoke(0);
+                                Console.WriteLine("DoubleClicked:"+TopForm.Text+":"+TopForm.GetType().ToString());
+                            }
+                        }
+                        else
+                        {
+                            Console.WriteLine("Click One");
+                            clicks = 1;
+                        }
+                        lastClick = Environment.TickCount;
                         TopForm.MouseDown?.Invoke(0);
                         Pressed[0] = TopForm;
+                        if (Active != TopForm)
+                        {
+                            if (Active != null)
+                            {
+                                Active.Deactivate?.Invoke();
+                            }
+                        }
+                        Active = TopForm;
+                        TopForm.Activate?.Invoke();
+                        
                         if (sdrag)
                         {
                             sdx = MX;
                             sdy = MY;
-                            Console.WriteLine("DRAGGING!");
+                    
                         
                         }
                     }
@@ -145,8 +186,9 @@ namespace Vivid3D.Resonance
                     int mvy = MY - sdy;
                     if (mvx != 0 || mvy != 0)
                     {
-                        Console.WriteLine("XD:" + mvx + " YD:" + mvy);
+                       
                         Pressed[0].Drag?.Invoke(mvx, mvy);
+                        Pressed[0].PostDrag?.Invoke(mvx,mvy);
                     }
                         sdx = MX;
 
@@ -178,6 +220,8 @@ namespace Vivid3D.Resonance
 
 
         }
+        public int clicks = 0;
+        public int lastClick = 0;
         private bool sdrag = true;
         private int sdx, sdy, ux, uy;
         public UIForm[] Pressed = new UIForm[32];
@@ -185,9 +229,10 @@ namespace Vivid3D.Resonance
         {
             foreach (var form in UpdateList)
             {
-
+                if (form.CheckBounds == false) continue;
                 if (form.InBounds(mx, my))
                 {
+                //    Console.WriteLine("Form:" + form.Text);
                     return form;
                     
                 }
@@ -195,43 +240,91 @@ namespace Vivid3D.Resonance
             }
             return null;
         }
-
+        private float TopB = 0.0f;
         public void Render()
         {
+            if (Top != null)
+            {
+                TopB = TopB + 0.065f;
+                if (TopB > 0.8f)
+                {
+                    TopB = 0.8f;
+                }
+            }
+            else
+            {
+                TopB = TopB - 0.085f;
+                if (TopB < 0) TopB = 0;
+            }
             Graphics.SmartUpdate();
 
-            UpdateRenderList();
-
-            foreach (var form in RenderList)
+            if (Top != null)
             {
-
-                if (form.Draw != null)
+                UpdateRenderList(Root);
+                foreach(var form in RenderList)
                 {
-                    form.Draw();
+                    form.Draw?.Invoke();
                 }
+                var ntex = new Texture.VTex2D(Vivid3D.App.VividApp.W, Vivid3D.App.VividApp.H);
 
+                ntex.CopyTex(0, 0);
+                OpenTK.Graphics.OpenGL4.GL.Clear(OpenTK.Graphics.OpenGL4.ClearBufferMask.ColorBufferBit);
+                Vivid3D.Draw.VPen.RectBlur2(0, 0, Vivid3D.App.VividApp.W, Vivid3D.App.VividApp.H, ntex, new OpenTK.Vector4(1, 1, 1, 1), TopB);
+
+
+                UpdateRenderList(Top);
+
+                foreach (var form in RenderList)
+                {
+                   
+                    form.Draw?.Invoke();
+                }
+              
+                ntex.Delete();
+            }
+            else
+            {
+                UpdateRenderList(Root);
+
+
+                foreach (var form in RenderList)
+                {
+
+                            
+                        form.Draw?.Invoke();
+                    
+
+                }
+                if (TopB > 0)
+                {
+                    Texture.VTex2D ntex = new Texture.VTex2D(Vivid3D.App.VividApp.W, Vivid3D.App.VividApp.H);
+                    ntex.CopyTex(0, 0);
+                    OpenTK.Graphics.OpenGL4.GL.Clear(OpenTK.Graphics.OpenGL4.ClearBufferMask.ColorBufferBit);
+                    Vivid3D.Draw.VPen.RectBlur2(0, 0, Vivid3D.App.VividApp.W, Vivid3D.App.VividApp.H, ntex, new OpenTK.Vector4(1, 1, 1, 1), TopB);
+                    ntex.Delete();
+                }
             }
         }
 
         public List<UIForm> UpdateList = new List<UIForm>();
         public List<UIForm> RenderList = new List<UIForm>();
 
-        private void UpdateUpdateList()
+        private void UpdateUpdateList(UIForm begin)
         {
             UpdateList.Clear();
 
-            AddNodeBackward(UpdateList, Root);
+            AddNodeBackward(UpdateList, begin);
 
 
 
         }
 
-        private void UpdateRenderList()
+        private void UpdateRenderList(UIForm begin)
         {
 
             RenderList.Clear();
 
-            AddNodeForward(RenderList, Root);
+            AddNodeForward(RenderList, begin);
             
 
         }

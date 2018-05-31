@@ -9,7 +9,7 @@ namespace Vivid3D.UI.UIWidgets
 {
     public class UIWindow : UIWidget
     {
-        public Vivid3D.App.StarApp AppLink = null;
+        public Vivid3D.App.VividApp AppLink = null;
         private UIDragZone titleDrag;
         private UIDragZone sizeDrag;
         private UIDragZone rightDrag;

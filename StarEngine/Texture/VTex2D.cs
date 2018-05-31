@@ -87,7 +87,33 @@ namespace Vivid3D.Texture
                 }
             }
         }
+        public void CopyTex(int x,int y)
+        {
+            GL.Enable(EnableCap.Texture2D);
+            GL.ActiveTexture(TextureUnit.Texture0);
+            GL.BindTexture(TextureTarget.Texture2D, this.ID);
+            GL.CopyTexSubImage2D(TextureTarget.Texture2D, 0, 0, 0, x,y, W, H);
+            GL.BindTexture(TextureTarget.Texture2D, 0);
+
+        }
+
+        ~VTex2D()
+        {
+            //NewMethod();
+        }
+
+        public void Delete()
+        {
+            GL.DeleteTexture(ID);
+        }
+
         public VTex2D(int w,int h,bool alpha=false)
+        {
+            GenTex(w, h, alpha);
+
+        }
+
+        private void GenTex(int w, int h, bool alpha)
         {
             GL.ActiveTexture(TextureUnit.Texture0);
             Alpha = alpha;
@@ -95,7 +121,7 @@ namespace Vivid3D.Texture
             H = h;
             ID = GL.GenTexture();
             GL.BindTexture(TextureTarget.Texture2D, ID);
-            if(alpha)
+            if (alpha)
             {
                 GL.TexImage2D(TextureTarget.Texture2D, 0, PixelInternalFormat.Rgba, w, h, 0, PixelFormat.Rgba, PixelType.UnsignedByte, IntPtr.Zero);
             }
@@ -108,8 +134,8 @@ namespace Vivid3D.Texture
             GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMinFilter, (int)TextureMinFilter.Nearest);
             GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMagFilter, (int)TextureMagFilter.Nearest);
             GL.PixelStore(PixelStoreParameter.PackAlignment, 4 * 4);
-           
         }
+
         public VTex2D(int w,int h,byte[] dat,bool alpha = true)
         {
             GL.ActiveTexture(TextureUnit.Texture0);

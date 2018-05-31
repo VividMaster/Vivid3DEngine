@@ -21,8 +21,8 @@ namespace Vivid3D.VFX
             
             var g = VFX.VisualFX.Graph;
 
-            int sw = Vivid3D.App.StarApp.W;
-            int sh = Vivid3D.App.StarApp.H;
+            int sw = Vivid3D.App.VividApp.W;
+            int sh = Vivid3D.App.VividApp.H;
 
             float[] ox = new float[4];
             float[] oy = new float[4];
