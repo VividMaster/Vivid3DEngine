@@ -115,6 +115,51 @@ namespace Vivid3D.Resonance
             }
             TopForm = top;
 
+            if (Active != null)
+            {
+
+                var key = VInput.KeyIn();
+                if (key != OpenTK.Input.Key.LastKey)
+                {
+                    if (key == OpenTK.Input.Key.LastKey)
+                    {
+                        LastKey = OpenTK.Input.Key.LastKey;
+                        NextKey = 0;
+                    }
+                    if (key == LastKey)
+                    {
+                        bool shift = false;
+                        if (VInput.KeyIn(OpenTK.Input.Key.ShiftLeft))
+                        {
+                            shift = true;
+                        }
+                        if (VInput.KeyIn(OpenTK.Input.Key.ShiftRight))
+                        {
+                            shift = true;
+                        }
+                        if (Environment.TickCount > NextKey)
+                        {
+                            Active.KeyPress?.Invoke(key,shift);
+                            NextKey = Environment.TickCount + 90;
+                        }
+                    }
+                    else
+                    {
+                        bool shift = false;
+                        if (VInput.KeyIn(OpenTK.Input.Key.ShiftLeft))
+                        {
+                            shift = true;
+                        }
+                        if (VInput.KeyIn(OpenTK.Input.Key.ShiftRight))
+                        {
+                            shift = true;
+                        }
+                        LastKey = key;
+                        Active.KeyPress?.Invoke(key,shift);
+                        NextKey = Environment.TickCount + 250;
+                    }
+                }
+            }
 
             if (VInput.MB[0])
             {
@@ -220,6 +265,8 @@ namespace Vivid3D.Resonance
 
 
         }
+        public int NextKey = 0;
+        public OpenTK.Input.Key LastKey = OpenTK.Input.Key.LastKey;
         public int clicks = 0;
         public int lastClick = 0;
         private bool sdrag = true;
@@ -229,12 +276,15 @@ namespace Vivid3D.Resonance
         {
             foreach (var form in UpdateList)
             {
-                if (form.CheckBounds == false) continue;
-                if (form.InBounds(mx, my))
+                if (form.CheckBounds == true)
                 {
-                //    Console.WriteLine("Form:" + form.Text);
-                    return form;
-                    
+
+                    if (form.InBounds(mx, my))
+                    {
+                        //    Console.WriteLine("Form:" + form.Text);
+                        return form;
+
+                    }
                 }
 
             }

@@ -22,7 +22,7 @@ namespace Vivid3D.Resonance
     public delegate void Click(int b);
     public delegate void Activate();
     public delegate void Deactivate();
-   
+    public delegate void KeyPressed(OpenTK.Input.Key key, bool shift);
     public delegate void Drag(int x, int y);
     public delegate void ChangedInfo();
    
@@ -37,6 +37,7 @@ namespace Vivid3D.Resonance
         public Vector4 Col = new Vector4(1, 1, 1, 0.7f);
         public float Blur = 0.4f;
         public float RefractV = 0.4f;
+        
         public ChangedInfo Changed = null;
         public Draw Draw=null;
         public Update Update=null;
@@ -55,6 +56,7 @@ namespace Vivid3D.Resonance
         public Deactivate Deactivate = null;
         public VTex2D CoreTex = null;
         public VTex2D NormTex = null;
+        public KeyPressed KeyPress = null;
         public int X = 0, Y = 0;
         public int W = 0, H = 0;
         public string Text = "";

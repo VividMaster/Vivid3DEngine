@@ -86,7 +86,7 @@ namespace Vivid3D.Input
         }
         public static Key KeyIn()
         {
-            if (Keys.Count == 0) return Key.ShiftLeft;
+            if (Keys.Count == 0) return Key.LastKey;
             if (Keys.Count > 1)
             {
                 foreach(var k in Keys)
@@ -103,9 +103,16 @@ namespace Vivid3D.Input
             }
             else
             {
-                foreach(var k in Keys)
+                foreach (var k in Keys)
                 {
-                    return k.Key;
+                    if (k.Key == Key.ShiftLeft || k.Key == Key.ShiftRight || k.Key == Key.LShift || k.Key == Key.RShift)
+                    {
+
+                    }
+                    else
+                    {
+                        return k.Key;
+                    }
                 }
             }
             return Key.LastKey;

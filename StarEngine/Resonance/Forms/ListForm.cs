@@ -80,14 +80,14 @@ namespace Vivid3D.Resonance.Forms
                     //var newi = new ItemForm().Set(5, (int)ly, W - 15, 20, item.Text) as ItemForm;
                     var newi = item;
                     //newi.Pic = item.Pic;
-                    if (ly > H-18 || ly<0)
+                    if (ly > H-22 || ly<0)
                     {
                         newi.Render = false;
-                        CheckBounds = false;
+                        newi.CheckBounds = false;
                     }
                     else
                     {
-                        CheckBounds = true;
+                        newi.CheckBounds = true;
                         newi.Render = true;
                     }
                     newi.Y = (int)ly;
