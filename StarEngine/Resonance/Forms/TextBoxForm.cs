@@ -16,6 +16,7 @@ namespace Vivid3D.Resonance.Forms
         public int StartI = 0;
         public bool ShowClaret = false;
         public int NextClaret;
+        public int ClaretE = 0;
        
         public TextBoxForm()
         {
@@ -45,10 +46,24 @@ namespace Vivid3D.Resonance.Forms
                                 ClaretI++;
                             }
                         }
+                        if (ClaretI > ClaretE)
+                        {
+                            if (StartI < Text.Length)
+                            {
+                                StartI++;
+                            }
+                        }
                         return;
                         break;
                     case OpenTK.Input.Key.Left:
-                        Console.WriteLine("!!!)");
+                    
+                        if (ClaretI == StartI)
+                        {
+                            if (StartI > 0)
+                            {
+                                StartI--;
+                            }
+                        }
                         if (Text.Length == 1)
                         {
                             ClaretI = 0;
@@ -200,27 +215,41 @@ namespace Vivid3D.Resonance.Forms
 
                 string dis=Text.Substring(StartI);
 
+                int cc = 0;
                 int t2 = 0;
+                string rtxt = "";
                 for(int i = 0; i < dis.Length; i++)
                 {
-                    t2+=UI.Font.Width(dis>?)
+                    rtxt = rtxt + dis.Substring(i, 1);
+                    var cr = dis.Substring(i, 1);
+                    t2 += UI.Font.Width(cr);
+                    if (t2 > W-30)
+                    {
+                        break;
+                    }
+                    cc++;
                 }
-
-                DrawText(dis, 5, 0, new Vector4(0.2f, 0.2f, 0.2f, 0.9f));
+                ClaretE = cc;
+                
+                DrawText(rtxt, 5, 0, new Vector4(0.2f, 0.2f, 0.2f, 0.9f));
 
                 if (Text.Length == 0) ClaretI = 0;
 
-                return;
+                
                 if(ShowClaret)
                 {
                     // Console.WriteLine("Claret!");
                     int cx = 0;
                     if (Text.Length > 0)
                     {
+                        int cv = 0;
                         for (int i = StartI; i < ClaretI; i++)
                         {
+
                             int cw = UI.Font.Width(Text.Substring(i, 1));
                             cx = cx + (cw);
+                            cv++;
+                            if (cv > cc) break;
                         }
                     }
                     DrawFormSolid(new Vector4(0.2f, 0.2f, 0.2f, 0.8f),cx+(Text.Length>0 ? 5 : 0),0,5, 20);

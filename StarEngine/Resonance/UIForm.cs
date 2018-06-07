@@ -236,12 +236,17 @@ namespace Vivid3D.Resonance
             H = h;
             Text = text;
             Changed?.Invoke();
+            if (!designed)
+            {
+                designed = true;
+                DesignUI();
+            }
             return this;
         }
-
+        bool designed = false;
         public UIForm()
         {
-            DesignUI();
+          
         }
 
         public UIForm SetImage(VTex2D tex,VTex2D norm=null)

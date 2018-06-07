@@ -10,9 +10,11 @@ using System.IO;
 using Vivid3D.App;
 namespace Vivid3D.Resonance.Forms
 {
+    public delegate void SelectFile(string pth);
     public class RequestFileForm : WindowForm 
     {
 
+        public SelectFile Selected = null;
         public ListForm Files;
         public VTex2D FolderPic = new VTex2D("Data\\UI\\folder1.png", LoadMethod.Single, true);
         public VTex2D FilePic = new VTex2D("Data\\UI\\file1.png", LoadMethod.Single, true);
@@ -20,7 +22,7 @@ namespace Vivid3D.Resonance.Forms
         public TextBoxForm DirBox, FileBox;
         public RequestFileForm(string title="",string defdir="")
         {
-
+            LockedSize = true;
             DirBox = new TextBoxForm().Set(55, 35, 300, 20) as TextBoxForm;
             FileBox = new TextBoxForm().Set(10, 415, 300, 20) as TextBoxForm;
             Add(DirBox);
@@ -28,6 +30,16 @@ namespace Vivid3D.Resonance.Forms
 
             var cancel = new ButtonForm().Set(10, 450, 120, 20, "Cancel");
             var ok = new ButtonForm().Set(180, 450, 120, 20, "Select");
+
+            void SelectFunc(int b)
+            {
+
+                Selected?.Invoke(DirBox.Text + "/" + FileBox.Text);
+
+            }
+
+            ok.Click = SelectFunc;
+
             Add(cancel);
             Add(ok);
 
@@ -93,6 +105,11 @@ namespace Vivid3D.Resonance.Forms
                 {
                     FileBox.Text = file.Name;
                 }
+                void DoubleClickFunc(int b)
+                {
+                    Selected?.Invoke(DirBox.Text + "/" + newi.Text);
+                }
+                newi.DoubleClick = DoubleClickFunc;
                 newi.Click = ClickFunc;
             }
             Files.Changed?.Invoke();

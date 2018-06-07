@@ -31,6 +31,7 @@ using Vivid3D.ParticleSystem;
 using Vivid3D.PostProcess.Processes;
 using Vivid3D.Resonance.Forms;
 using Vivid3D.Physics;
+using ModelEditor.States;
 namespace ModelEditor.Forms
 {
     public class StartScreenForm : UIForm
@@ -70,7 +71,23 @@ namespace ModelEditor.Forms
                 switch (b)
                 {
                     case 0:
+
+                        void SelectFunc(string path)
+                        {
+
+                            Console.WriteLine("Import:" + path);
+                            VividApp.ActiveState.SUI.Top = null;
+                            EG.MeshPath = path;
+                            var ns = new MeshEditScreen();
+                            VividApp.PushState(ns);
+                            ns.SetMesh(path);
+                            return;
+
+
+                        }
+
                         impFile = new RequestFileForm("Select a mesh to import");
+                        impFile.Selected = SelectFunc;
                         VividApp.ActiveState.SUI.Top = impFile;
                         break;
                 }
