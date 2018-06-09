@@ -28,13 +28,13 @@ namespace Vivid3D.Resonance.Forms
             BodyNorm = new VTex2D("Data\\UI\\normal\\winnorm5.jpg", LoadMethod.Single, false);
 
 
-            var title = new ButtonForm().Set(0, 0, W, 20, "");
+            var title = new ButtonForm().Set(0, 0, W, 20, "").SetImage(TitleImg);
 
-            var body = new ImageForm().Set(0, 22, W, H - 24, "").SetImage(BodyImg,BodyNorm).SetPeak(true,false);
+            var body = new ImageForm().Set(0, 20, W, H - 22, "").SetImage(BodyImg,BodyNorm).SetPeak(true,false);
             body.Blur = 0.1f;
             body.RefractV = 0.72f;
 
-            resize = (ButtonForm)new ButtonForm().Set(W - 14, H - 14, 14, 14, "X");
+            resize = (ButtonForm)new ButtonForm().Set(W - 14, H - 14, 14, 14, "");
 
             void ResizeDrag(int x,int y)
             {
