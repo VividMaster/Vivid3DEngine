@@ -1,1 +1,0 @@
-unpack this to a empty folder, then unpack the dlllibs.zip file into the SAME folder, not the data folder. then run the app.
